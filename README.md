@@ -8,6 +8,6 @@
 - Leticia Dépierraz
 - Deyan Gabriel Tucev
 
-**comment installer le projet**
+**Comment installer le projet**
 
-**ce que l'on a utilisé pour le projet**
+**Ce que l'on a utilisé pour le projet**
