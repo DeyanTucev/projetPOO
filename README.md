@@ -29,6 +29,6 @@
 
 ## **Contacts**
 chris.brandt@eduvaud.ch  
-deyan.tucev@eduvaud.ch
-samuel.gergely@eduvaud.ch
-leticia.depierraz@eduvaud.ch
+deyan.tucev@eduvaud.ch  
+samuel.gergely@eduvaud.ch  
+leticia.depierraz@eduvaud.ch  
