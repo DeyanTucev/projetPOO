@@ -10,7 +10,9 @@
 *Jack Invaders* is a small game heavily inspired by the popular classic *Space Invaders*.
 
 ### What has been done
-- **To be filled**
+- Establishing the basis on which we'll code
+- Importing the sprite for the player starship
+- Movements of the player starship
   
 ### What hasn't been done
 - **To be filled** 
@@ -22,7 +24,7 @@
 - **To be filled**
 
 ### **graphics engine**
-- **To be filled**
+- GODOT
 
 ## **Project Setup & Installation**
 - **to be filled**
