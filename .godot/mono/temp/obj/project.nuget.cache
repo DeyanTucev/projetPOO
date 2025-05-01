@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "vxLborYAaMM=",
+  "dgSpecHash": "O4/PE876EIs=",
   "success": true,
-  "projectFilePath": "C:\\cours\\2emeAnnee\\spaceinvader\\projetPOO\\Space Invaders.csproj",
+  "projectFilePath": "C:\\cours\\2emeAnnee\\spaceinvader\\projetPOO\\SpaceInvaders.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\pt30jph\\.nuget\\packages\\godot.sourcegenerators\\4.4.1\\godot.sourcegenerators.4.4.1.nupkg.sha512",
     "C:\\Users\\pt30jph\\.nuget\\packages\\godotsharp\\4.4.1\\godotsharp.4.4.1.nupkg.sha512",

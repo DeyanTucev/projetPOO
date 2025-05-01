@@ -94,9 +94,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\cours\\2emeAnnee\\spaceinvader\\projetPOO\\Space Invaders.csproj",
-      "projectName": "Space Invaders",
-      "projectPath": "C:\\cours\\2emeAnnee\\spaceinvader\\projetPOO\\Space Invaders.csproj",
+      "projectUniqueName": "C:\\cours\\2emeAnnee\\spaceinvader\\projetPOO\\SpaceInvaders.csproj",
+      "projectName": "SpaceInvaders",
+      "projectPath": "C:\\cours\\2emeAnnee\\spaceinvader\\projetPOO\\SpaceInvaders.csproj",
       "packagesPath": "C:\\Users\\pt30jph\\.nuget\\packages\\",
       "outputPath": "C:\\cours\\2emeAnnee\\spaceinvader\\projetPOO\\.godot\\mono\\temp\\obj\\",
       "projectStyle": "PackageReference",
