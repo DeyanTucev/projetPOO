@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "yUPNX+dIf+o=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\pu22amq\\godot\\projetPOO\\Space Invaders.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\pu22amq\\.nuget\\packages\\godot.sourcegenerators\\4.4.1\\godot.sourcegenerators.4.4.1.nupkg.sha512",
+    "C:\\Users\\pu22amq\\.nuget\\packages\\godotsharp\\4.4.1\\godotsharp.4.4.1.nupkg.sha512",
+    "C:\\Users\\pu22amq\\.nuget\\packages\\godotsharpeditor\\4.4.1\\godotsharpeditor.4.4.1.nupkg.sha512"
+  ],
+  "logs": []
+}
