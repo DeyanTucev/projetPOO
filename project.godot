@@ -10,7 +10,8 @@ config_version=5
 
 [application]
 
-config/features=PackedStringArray("4.4")
+run/main_scene="uid://d1iwjwyo63mpa"
+config/features=PackedStringArray("4.4", "C#")
 
 [dotnet]
 

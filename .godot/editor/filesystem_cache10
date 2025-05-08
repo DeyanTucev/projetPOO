@@ -1,6 +1,6 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1746107619
+::res://::1746704613
 README.md::TextFile/TextFile::-1::1746106961::0::1::::<><><>0<>0<><>::
-Sprite2d.cs::CSharpScript::8252083964842754216::1746107367::0::1::::<><><>0<>0<><>::
-sprite_2d.tscn::PackedScene::9002040046954276030::1746107367::0::1::::<><><>0<>0<><>::uid://hkhr4u62pvvc::::res://th (2).png<>uid://dptmu8sv7pdd5::::res://Sprite2d.cs
+Sprite2d.cs::CSharpScript::8252083964842754216::1746107367::0::1::::<>Sprite2D<><>0<>0<><>::
+sprite_2d.tscn::PackedScene::9002040046954276030::1746109171::0::1::::<><><>0<>0<><>::uid://hkhr4u62pvvc::::res://th (2).png<>uid://dptmu8sv7pdd5::::res://Sprite2d.cs
 th (2).png::CompressedTexture2D/CompressedTexture2D::512422615971009192::1746107367::1746107391::1::::<><><>0<>0<>261f9ad8097f5d86b93d669abf41db24<>res://.godot/imported/th (2).png-9e88262a097fd0a9383451b679d7ad0a.ctex::
