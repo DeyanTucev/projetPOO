@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\cours\\2emeAnnee\\spaceinvader\\projetPOO\\SpaceInvaders.csproj": {}
+    "C:\\Users\\pu22amq\\godot\\projetPOO\\SpaceInvaders.csproj": {}
   },
   "projects": {
-    "C:\\cours\\2emeAnnee\\spaceinvader\\projetPOO\\SpaceInvaders.csproj": {
+    "C:\\Users\\pu22amq\\godot\\projetPOO\\SpaceInvaders.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\cours\\2emeAnnee\\spaceinvader\\projetPOO\\SpaceInvaders.csproj",
+        "projectUniqueName": "C:\\Users\\pu22amq\\godot\\projetPOO\\SpaceInvaders.csproj",
         "projectName": "SpaceInvaders",
-        "projectPath": "C:\\cours\\2emeAnnee\\spaceinvader\\projetPOO\\SpaceInvaders.csproj",
-        "packagesPath": "C:\\Users\\pt30jph\\.nuget\\packages\\",
-        "outputPath": "C:\\cours\\2emeAnnee\\spaceinvader\\projetPOO\\.godot\\mono\\temp\\obj\\",
+        "projectPath": "C:\\Users\\pu22amq\\godot\\projetPOO\\SpaceInvaders.csproj",
+        "packagesPath": "C:\\Users\\pu22amq\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\pu22amq\\godot\\projetPOO\\.godot\\mono\\temp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\pt30jph\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\pu22amq\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -43,7 +43,8 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        }
+        },
+        "SdkAnalysisLevel": "9.0.200"
       },
       "frameworks": {
         "net8.0": {
@@ -73,12 +74,26 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[8.0.15, 8.0.15]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[8.0.15, 8.0.15]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[8.0.15, 8.0.15]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
