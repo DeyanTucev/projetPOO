@@ -1,17 +1,10 @@
 ea4bc82a6ad023ab7ee23ee620429895
-<<<<<<< HEAD
-::res://::1746704538
+::res://::1746705399
+ennemi.png::CompressedTexture2D::8818357190839567760::1746705399::1746705436::1::::<><><>0<>0<>82d20887357b4b623d64861554ec70ac<>res://.godot/imported/ennemi.png-68b5038ed48880e6fbde7d50cc003099.ctex::
 README.md::TextFile/TextFile::-1::1746703848::0::1::::<><><>0<>0<><>::
-Sprite2d.cs::CSharpScript::8252083964842754216::1746704304::0::1::::<>Sprite2D<><>0<>0<><>::
-sprite_2d.tscn::PackedScene::9002040046954276030::1746704329::0::1::::<><><>0<>0<><>::uid://hkhr4u62pvvc::::res://th (2).png<>uid://dptmu8sv7pdd5::::res://Sprite2d.cs
+Sprite2d.cs::CSharpScript::8252083964842754216::1746704819::0::1::::<>Sprite2D<><>0<>0<><>::
+sprite_2d.tscn::PackedScene::9002040046954276030::1746704544::0::1::::<><><>0<>0<><>::uid://hkhr4u62pvvc::::res://th (2).png<>uid://dptmu8sv7pdd5::::res://Sprite2d.cs
 th (2).png::CompressedTexture2D/CompressedTexture2D::512422615971009192::1746704304::1746704326::1::::<><><>0<>0<>261f9ad8097f5d86b93d669abf41db24<>res://.godot/imported/th (2).png-9e88262a097fd0a9383451b679d7ad0a.ctex::
 ::res://addons/::1743688333
 ::res://addons/godot-git-plugin/::1746703841
 ::res://addons/godot-git-plugin/win64/::1746703868
-=======
-::res://::1746704613
-README.md::TextFile/TextFile::-1::1746106961::0::1::::<><><>0<>0<><>::
-Sprite2d.cs::CSharpScript::8252083964842754216::1746107367::0::1::::<>Sprite2D<><>0<>0<><>::
-sprite_2d.tscn::PackedScene::9002040046954276030::1746109171::0::1::::<><><>0<>0<><>::uid://hkhr4u62pvvc::::res://th (2).png<>uid://dptmu8sv7pdd5::::res://Sprite2d.cs
-th (2).png::CompressedTexture2D/CompressedTexture2D::512422615971009192::1746107367::1746107391::1::::<><><>0<>0<>261f9ad8097f5d86b93d669abf41db24<>res://.godot/imported/th (2).png-9e88262a097fd0a9383451b679d7ad0a.ctex::
->>>>>>> 411a17d2307b90b12c72d623d54ea91cd149cb2d
