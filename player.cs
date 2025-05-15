@@ -16,20 +16,14 @@ public partial class player : Area2D
     public override void _Process(double delta)
     {
 
-        var velocity = Vector2.Zero;
-        Position += velocity * (float)delta;
-        Position = new Vector2(
-            x: Mathf.Clamp(Position.X, 0, ScreenSize.X),
-            y: Mathf.Clamp(Position.Y, 0, ScreenSize.Y)
-        );
-
-        if (Input.IsKeyPressed(Key.Right))
+        int movement = 10;
+        if (Input.IsKeyPressed(Key.A) || Input.IsKeyPressed(Key.Left))
         {
-            velocity.X += Speed;
+            Position += new Vector2(-movement, 0);
         }
-        if (Input.IsKeyPressed(Key.Left))
+        if (Input.IsKeyPressed(Key.D) || Input.IsKeyPressed(Key.Right))
         {
-            velocity.X -= Speed;
+            Position += new Vector2(movement, 0);
         }
         
     }
