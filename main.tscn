@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3slj5b7ngnyv"]
+
+[ext_resource type="PackedScene" uid="uid://bm7kw27mvam6a" path="res://movement_zone.tscn" id="1_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://d3arvatk87hy5" path="res://player.tscn" id="1_ig7tw"]
+
+[node name="main" type="Node2D"]
+
+[node name="MovementZone" parent="." instance=ExtResource("1_0xm2m")]
+
+[node name="Player" parent="." instance=ExtResource("1_ig7tw")]
+Speed = 400
+MinX = -400.0
+MaxX = 444.0
+MaxY = 1800.0
