@@ -6,6 +6,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
 
 [node name="Player" type="Area2D"]
+disable_mode = 1
+input_pickable = false
 script = ExtResource("1_onrkg")
 metadata/_edit_group_ = true
 
