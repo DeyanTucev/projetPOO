@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://b207reh336uco"]
+
+[ext_resource type="Script" uid="uid://ccdp7dspp80o" path="res://EnemyContainer.cs" id="1_j0w7u"]
+[ext_resource type="PackedScene" uid="uid://b4ejql5eyq577" path="res://Scenes/enemy.tscn" id="2_j0w7u"]
+
+[node name="EnnemyContainer" type="Node2D"]
+script = ExtResource("1_j0w7u")
+EnemyScene = ExtResource("2_j0w7u")
+
+[node name="EnemyGroup" type="Node2D" parent="."]
+
+[node name="Enemy" parent="EnemyGroup" instance=ExtResource("2_j0w7u")]
+position = Vector2(124, 96)
