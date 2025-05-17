@@ -7,8 +7,8 @@ public partial class EnemyContainer : Node2D
     [Export] public PackedScene EnemyScene;
     [Export] public int Columns = 10;
     [Export] public int Rows = 5;
-    [Export] public float HorizontalSpacing = 40f;
-    [Export] public float VerticalSpacing = 40f;
+    [Export] public float HorizontalSpacing = 100f;
+    [Export] public float VerticalSpacing = 100f;
     [Export] public float MoveSpeed = 40f;
     [Export] public float MoveDownAmount = 10f;
 
