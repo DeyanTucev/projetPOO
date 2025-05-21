@@ -6,9 +6,12 @@ public partial class Enemy : Area2D
     [Export] public PackedScene BulletScene;
     [Export] public float BulletSpeed = 200f; // Speed of the bullet
 
+    private Timer shootTimer;
+
     public override void _Ready()
     {
-        GetTree().CreateTimer(2.0).Timeout += Shoot; // Call Shoot every 2 seconds
+        shootTimer = GetNode<Timer>("ShootTimer");
+        shootTimer.Timeout += Shoot;
     }
 
     public void Shoot()
@@ -21,10 +24,16 @@ public partial class Enemy : Area2D
             return;
         }
 
-        var bullet = BulletScene.Instantiate<Node2D>();
-        bullet.GlobalPosition = GlobalPosition;
-
-        GetTree().Root.AddChild(bullet); // Add the bullet to the scene tree
+        var bulletNode = BulletScene.Instantiate();
+        if (bulletNode is EnemyBullet bullet)
+        {
+            bullet.GlobalPosition = GlobalPosition;
+            GetTree().Root.AddChild(bullet);
+        }
+        else
+        {
+            GD.PrintErr("BulletScene is not an EnemyBullet!");
+        }
     }
 
     private void _on_Area2D_area_entered(Area2D area)

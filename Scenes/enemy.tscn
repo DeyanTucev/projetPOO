@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://b4ejql5eyq577"]
 
 [ext_resource type="Script" uid="uid://c48blul8vox4t" path="res://Enemy.cs" id="1_4gyqm"]
-[ext_resource type="PackedScene" uid="uid://36288qqelil0" path="res://Scenes/EnnemyBullet.tscn" id="2_afpow"]
+[ext_resource type="PackedScene" uid="uid://ciiailpy4xp15" path="res://Scenes/EnnemyBullet.tscn" id="2_afpow"]
 [ext_resource type="Texture2D" uid="uid://c57owfdkqx4m6" path="res://sprites/ennemi.png" id="2_qi2p4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2wvcu"]
@@ -18,6 +18,8 @@ texture = ExtResource("2_qi2p4")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_2wvcu")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="ShootTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
 
 [connection signal="area_entered" from="." to="." method="_on_Area2D_area_entered"]
