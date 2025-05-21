@@ -1,17 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://b8l7vov0627kf"]
 
-[ext_resource type="PackedScene" uid="uid://b207reh336uco" path="res://Scenes/ennemies.tscn" id="1_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://b207reh336uco" path="res://Scenes/EnemyContainer.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://d3arvatk87hy5" path="res://Scenes/player.tscn" id="2_h2yge"]
 
 [node name="Main" type="Node2D"]
 
-[node name="Ennemi" parent="." instance=ExtResource("1_0xm2m")]
-Columns = 10
-Rows = 5
-HorizontalSpacing = 40.0
-VerticalSpacing = 40.0
-MoveSpeed = 40.0
-MoveDownAmount = 10.0
-
 [node name="Player" parent="." instance=ExtResource("2_h2yge")]
-Speed = 10
+
+[node name="EnemyContainer" parent="." instance=ExtResource("2_0xm2m")]
+position = Vector2(600, 100)

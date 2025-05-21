@@ -6,9 +6,14 @@ public partial class Enemy : Area2D
     [Export] public PackedScene BulletScene;
     [Export] public float BulletSpeed = 200f;
 
+    public override void _Ready()
+    {
+        GetTree().CreateTimer(2.0).Timeout += Shoot;
+    }
+
     public void Shoot()
     {
-        if (BulletScene != null)
+        if (BulletScene == null)
         {
             GD.Print("BulletScene not assigned.");
             return;
