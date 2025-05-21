@@ -11,12 +11,12 @@ public partial class EnemyContainer : Node2D
     [Export] public float VerticalSpacing = 100f;
     [Export] public float MoveSpeed = 100f;
     [Export] public float MoveDownAmount = 50f;
-    [Export] public float LeftBoundary = 100f;
-    [Export] public float RightBoundary = 1100f;
+    [Export] public float LeftBoundary = 100f; // Left boundary for enemy movement
+    [Export] public float RightBoundary = 1100f; // Right boundary for enemy movement
 
     private Vector2 _direction = Vector2.Right;
-    private float moveTimer = 0f;
-    private float moveDelay = 1.0f;
+    private float moveTimer = 0f; // Timer to control movement delay
+    private float moveDelay = 1.0f; // Delay between movements
     private bool shouldMoveDown = false;
 
     public override void _Ready()
@@ -27,7 +27,7 @@ public partial class EnemyContainer : Node2D
     public override void _Process(double delta)
     {
         moveTimer += (float)delta;
-        if (moveTimer >= moveDelay)
+        if (moveTimer >= moveDelay) // Check if the delay has passed
         {
             if (shouldMoveDown)
             {
@@ -43,11 +43,12 @@ public partial class EnemyContainer : Node2D
         }
     }
 
-    private void CheckBounds()
+    private void CheckBounds() 
     {
-        foreach (Node child in GetChildren())
+        foreach (Node child in GetChildren()) // Check each child node
         {
-            if (child is Area2D enemy)
+            if (child is Area2D enemy) // Check if the child is an Area2D (enemy)
+            
             {
                 float x = enemy.GlobalPosition.X;
                 if (x > RightBoundary || x < LeftBoundary)
@@ -60,7 +61,7 @@ public partial class EnemyContainer : Node2D
         }
     }
 
-    private void SpawnEnemies()
+    private void SpawnEnemies() // Spawns enemies in a grid formation
     {
         float totalWidth = (Columns - 1) * HorizontalSpacing;
         float startX = -(totalWidth / 2f);
@@ -69,11 +70,11 @@ public partial class EnemyContainer : Node2D
         {
             for (int x = 0; x < Columns; x++)
             {
-                var enemy = EnemyScene.Instantiate<Area2D>();
+                var enemy = EnemyScene.Instantiate<Area2D>(); // Instantiate the enemy scene
                 float posX = startX + (x * HorizontalSpacing);
                 float posY = y * VerticalSpacing;
-                enemy.Position = new Vector2(posX, posY);
-                AddChild(enemy);
+                enemy.Position = new Vector2(posX, posY); // Set the position of the enemy
+                AddChild(enemy); // Add the enemy to the container
             }
         }
     }
