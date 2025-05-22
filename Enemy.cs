@@ -11,11 +11,6 @@ public partial class Enemy : Area2D
 
     public override void _Ready()
     {
-        shootTimer = GetNode<Timer>("ShootTimer");
-        if (CanShoot)
-            shootTimer.Timeout += Shoot;
-        else
-            shootTimer.Stop();
     }
 
     public void Shoot()

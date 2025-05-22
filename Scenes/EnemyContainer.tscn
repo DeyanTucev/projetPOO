@@ -12,3 +12,5 @@ EnemyScene = ExtResource("2_cd1aa")
 [node name="Enemy" parent="EnemyGroup" instance=ExtResource("2_cd1aa")]
 visible = false
 BulletScene = null
+
+[node name="ShootTimer" type="Timer" parent="."]

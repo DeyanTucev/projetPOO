@@ -18,10 +18,17 @@ public partial class EnemyContainer : Node2D
     private float moveTimer = 0f; // Timer to control movement delay
     private float moveDelay = 1.0f; // Delay between movements
     private bool shouldMoveDown = false;
+    private Timer shootTimer;
+    private Random random = new Random();
 
     public override void _Ready()
     {
         SpawnEnemies();
+        shootTimer = GetNode<Timer>("ShootTimer");
+        shootTimer.WaitTime = 1.0 + random.NextDouble();
+        shootTimer.Timeout += OnShootTimerTimeout;
+        shootTimer.Autostart = true;
+        shootTimer.Start();
     }
 
     public override void _Process(double delta)
@@ -42,7 +49,24 @@ public partial class EnemyContainer : Node2D
             moveTimer = 0f;
         }
     }
+    
+    private void OnShootTimerTimeout()
+    {
+        var shooters = new List<Enemy>();
+        foreach (Node child in GetChildren())
+        {
+            if (child is Enemy enemy && enemy.CanShoot)
+            {
+                shooters.Add(enemy);
+            }
+        }
 
+        if (shooters.Count > 0)
+        {
+            int index = random.Next(shooters.Count);
+            shooters[index].Shoot();
+        }
+    }
     private void CheckBounds() 
     {
         foreach (Node child in GetChildren()) // Check each child node
