@@ -8,12 +8,13 @@ public partial class player : Area2D
     [Export] public float MinX { get; set; } = 0f;
     [Export] public float MaxX { get; set; } = 1200f;
 
-
+    private Timer ShootTimer;
     public Vector2 ScreenSize;
     private Vector2 halfSize;
 
     public override void _Ready()
     {
+        ShootTimer = GetNode<Timer>("ShootTimer");
         ScreenSize = GetViewportRect().Size;
 
         var collisionShape = GetNode<CollisionShape2D>("CollisionShape2D");
@@ -40,9 +41,13 @@ public partial class player : Area2D
         Position = Position.Clamp(min, max);
 
         // Player shooting
-        if (Input.IsKeyPressed(Key.Space))
+        if (Input.IsKeyPressed(Key.Space) && !ShootTimer.IsStopped())
+        return;
+          
+        if (Input.IsKeyPressed(Key.Space) && ShootTimer.IsStopped())
         {
             Shoot();
+            ShootTimer.Start();
         }
     } 
 

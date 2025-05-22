@@ -25,7 +25,6 @@ public partial class EnemyContainer : Node2D
     {
         SpawnEnemies();
         shootTimer = GetNode<Timer>("ShootTimer");
-        shootTimer.WaitTime = 1.0 + random.NextDouble();
         shootTimer.Timeout += OnShootTimerTimeout;
         shootTimer.Autostart = true;
         shootTimer.Start();
@@ -55,7 +54,7 @@ public partial class EnemyContainer : Node2D
         var shooters = new List<Enemy>();
         foreach (Node child in GetChildren())
         {
-            if (child is Enemy enemy && enemy.CanShoot)
+            if (child is Enemy enemy)
             {
                 shooters.Add(enemy);
             }
@@ -98,14 +97,6 @@ public partial class EnemyContainer : Node2D
                 float posX = startX + (x * HorizontalSpacing);
                 float posY = y * VerticalSpacing;
                 enemy.Position = new Vector2(posX, posY);
-
-                if (enemy is Enemy enemyScript)
-                {
-                    if (y == Rows - 1)
-                    {
-                        enemyScript.CanShoot = true;
-                    }
-                }
 
                 AddChild(enemy); // Add the enemy once
             }

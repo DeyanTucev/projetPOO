@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b207reh336uco"]
 
-[ext_resource type="Script" uid="uid://ccdp7dspp80o" path="res://EnemyContainer.cs" id="1_yqrr3"]
+[ext_resource type="Script" uid="uid://ccdp7dspp80o" path="res://Scripts/EnemyContainer.cs" id="1_yqrr3"]
 [ext_resource type="PackedScene" uid="uid://b4ejql5eyq577" path="res://Scenes/enemy.tscn" id="2_cd1aa"]
 
 [node name="EnemyContainer" type="Node2D"]

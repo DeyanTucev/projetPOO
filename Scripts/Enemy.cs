@@ -5,7 +5,6 @@ public partial class Enemy : Area2D
 {
     [Export] public PackedScene BulletScene;
     [Export] public float BulletSpeed = 200f; // Speed of the bullet
-    [Export] public bool CanShoot = false; // Flag to control shooting
 
     private Timer shootTimer;
 
