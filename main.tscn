@@ -8,7 +8,7 @@
 [node name="MovementZone" parent="." instance=ExtResource("1_0xm2m")]
 
 [node name="Player" parent="." instance=ExtResource("1_ig7tw")]
-Speed = 400
-MinX = -400.0
-MaxX = 444.0
+position = Vector2(59, -1)
+MinX = -380.0
+MaxX = 510.0
 MaxY = 1800.0
