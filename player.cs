@@ -10,7 +10,6 @@ public partial class player : Area2D
     [Export] public float MinY { get; set; }
     [Export] public float MaxY { get; set; }
 
-
     private Vector2 screenSize;
     private Vector2 halfSize;
 
@@ -20,7 +19,10 @@ public partial class player : Area2D
 
         var collisionShape = GetNode<CollisionShape2D>("CollisionShape2D");
         var shape = (RectangleShape2D)collisionShape.Shape;
-        halfSize = shape.Size / 2.0f; // Pour Godot 4
+        halfSize = shape.Size / 2.0f;
+
+        // Connexion du signal de collision
+        Connect("body_entered", new Callable(this, nameof(OnBodyEntered)));
     }
 
     public override void _Process(double delta)
@@ -33,9 +35,17 @@ public partial class player : Area2D
             velocity.X += 1;
 
         Position += velocity.Normalized() * Speed * (float)delta;
+
         Vector2 min = new Vector2(MinX - halfSize.X, MinY - halfSize.Y);
         Vector2 max = new Vector2(MaxX - halfSize.X, MaxY - halfSize.Y);
         Position = Position.Clamp(min, max);
+    }
+
+    private void OnBodyEntered(Node body)
+    {
+        GD.Print($"Collision détectée avec : {body.Name}");
+        QueueFree();
+
 
     }
 }
