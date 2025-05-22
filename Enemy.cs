@@ -5,13 +5,17 @@ public partial class Enemy : Area2D
 {
     [Export] public PackedScene BulletScene;
     [Export] public float BulletSpeed = 200f; // Speed of the bullet
+    [Export] public bool CanShoot = false; // Flag to control shooting
 
     private Timer shootTimer;
 
     public override void _Ready()
     {
         shootTimer = GetNode<Timer>("ShootTimer");
-        shootTimer.Timeout += Shoot;
+        if (CanShoot)
+            shootTimer.Timeout += Shoot;
+        else
+            shootTimer.Stop();
     }
 
     public void Shoot()
@@ -23,11 +27,12 @@ public partial class Enemy : Area2D
             GD.Print("BulletScene not assigned.");
             return;
         }
-
         var bulletNode = BulletScene.Instantiate();
         if (bulletNode is EnemyBullet bullet)
         {
+
             bullet.GlobalPosition = GlobalPosition;
+            
             GetTree().Root.AddChild(bullet);
         }
         else

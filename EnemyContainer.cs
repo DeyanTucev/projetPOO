@@ -61,7 +61,7 @@ public partial class EnemyContainer : Node2D
         }
     }
 
-    private void SpawnEnemies() // Spawns enemies in a grid formation
+    private void SpawnEnemies()
     {
         float totalWidth = (Columns - 1) * HorizontalSpacing;
         float startX = -(totalWidth / 2f);
@@ -70,12 +70,22 @@ public partial class EnemyContainer : Node2D
         {
             for (int x = 0; x < Columns; x++)
             {
-                var enemy = EnemyScene.Instantiate<Area2D>(); // Instantiate the enemy scene
+                var enemy = EnemyScene.Instantiate<Area2D>();
                 float posX = startX + (x * HorizontalSpacing);
                 float posY = y * VerticalSpacing;
-                enemy.Position = new Vector2(posX, posY); // Set the position of the enemy
-                AddChild(enemy); // Add the enemy to the container
+                enemy.Position = new Vector2(posX, posY);
+
+                if (enemy is Enemy enemyScript)
+                {
+                    if (y == Rows - 1)
+                    {
+                        enemyScript.CanShoot = true;
+                    }
+                }
+
+                AddChild(enemy); // Add the enemy once
             }
         }
     }
+
 }
