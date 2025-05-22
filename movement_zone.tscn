@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bm7kw27mvam6a"]
+
+[ext_resource type="Texture2D" uid="uid://bcfwyh3me38cy" path="res://sprites/starry-sky-stars-space-night-1266267.jpg" id="1_8tsfm"]
+
+[node name="MovementZone" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 997.0
+offset_bottom = 1077.0
+texture = ExtResource("1_8tsfm")
+expand_mode = 1
