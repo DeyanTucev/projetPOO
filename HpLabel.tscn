@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://bcatap5sh0muo"]
+
+[ext_resource type="Script" uid="uid://b60nephur3f21" path="res://HpLabel.cs" id="1_1vqp3"]
+
+[node name="Node2D" type="Node2D"]
+z_index = 10
+script = ExtResource("1_1vqp3")
+
+[node name="HpLabel" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 60
+text = "HP : 3"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
