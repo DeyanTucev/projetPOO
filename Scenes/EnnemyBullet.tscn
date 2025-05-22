@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://ciiailpy4xp15"]
+
+[ext_resource type="Script" uid="uid://dtt0aohwe0ql7" path="res://EnemyBullet.cs" id="1_o7xso"]
+[ext_resource type="Texture2D" uid="uid://4xtqeregf5ob" path="res://sprites/enemyBullet.png" id="1_spmqd"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o7xso"]
+radius = 8.0
+height = 36.0
+
+[node name="EnemyBullet" type="Area2D"]
+script = ExtResource("1_o7xso")
+
+[node name="BulletSprite" type="Sprite2D" parent="."]
+rotation = 1.5708
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_spmqd")
+offset = Vector2(80, -42)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_o7xso")
