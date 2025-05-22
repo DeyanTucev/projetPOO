@@ -53,13 +53,13 @@ public partial class MainMenu : Control
 		GetTree().Quit();
 	}
 	
-	public void CloseSettings()
+	private void CloseSettings()
 	{
 		settingsMenu.Visible = false;
 		mainButtons.Visible = true;
 	}
 
-	public void CloseCredits()
+	private void CloseCredits()
 	{
 		creditsMenu.Visible = false;
 		mainButtons.Visible = true;

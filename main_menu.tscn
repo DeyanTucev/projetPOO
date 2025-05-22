@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://c10u7oc3jo8xd"]
+[gd_scene load_steps=4 format=3 uid="uid://c10u7oc3jo8xd"]
 
 [ext_resource type="Script" uid="uid://bjla3bl35rt7n" path="res://MainMenu.cs" id="1_06t4h"]
+[ext_resource type="Texture2D" uid="uid://duqedcf0m0hme" path="res://sprites/starry-sky-stars-space-night-1266267.jpg" id="2_7vrkn"]
 
 [sub_resource type="Theme" id="Theme_06t4h"]
 
@@ -10,6 +11,7 @@ anchors_preset = 0
 script = ExtResource("1_06t4h")
 
 [node name="Title" type="Label" parent="."]
+layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 500.0
 size_flags_vertical = 1
@@ -20,6 +22,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 0
 offset_top = 549.0
 offset_right = 1920.0
 offset_bottom = 1049.0
@@ -33,21 +36,25 @@ theme_override_constants/separation = 16
 layout_mode = 2
 theme_override_font_sizes/font_size = 75
 text = "PLAY"
+flat = true
 
 [node name="settings" type="Button" parent="CenterContainer/MainButtons"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 75
 text = "SETTINGS"
+flat = true
 
 [node name="credits" type="Button" parent="CenterContainer/MainButtons"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 75
 text = "CREDITS"
+flat = true
 
 [node name="quit" type="Button" parent="CenterContainer/MainButtons"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 75
 text = "QUIT"
+flat = true
 
 [node name="SettingsMenu" type="VBoxContainer" parent="CenterContainer"]
 visible = false
@@ -138,9 +145,11 @@ size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 75
 text = "BACK"
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
 z_index = -4096
+layout_mode = 0
 offset_right = 1918.0
 offset_bottom = 1072.0
 mouse_filter = 2
-color = Color(1, 0.556863, 0.321569, 1)
+texture = ExtResource("2_7vrkn")
+expand_mode = 1
