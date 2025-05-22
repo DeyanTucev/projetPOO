@@ -9,9 +9,9 @@
 [node name="MovementZone" parent="." instance=ExtResource("1_h2yge")]
 
 [node name="Player" parent="." instance=ExtResource("2_h2yge")]
-position = Vector2(0, -3)
-MinX = -495.0
-MaxX = 535.0
+position = Vector2(563, 928)
+MinX = 50.0
+MaxX = 1150.0
 
 [node name="EnemyContainer" parent="." instance=ExtResource("2_0xm2m")]
 position = Vector2(600, 100)

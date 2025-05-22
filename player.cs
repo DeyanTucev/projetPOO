@@ -3,11 +3,10 @@ using System;
 
 public partial class player : Area2D
 {
+    [Export] public PackedScene PlayerShootScene;
     [Export] public float Speed { get; set; } = 1000f;
     [Export] public float MinX { get; set; } = 0f;
     [Export] public float MaxX { get; set; } = 1200f;
-    [Export] public float MinY { get; set; } = 0f;
-    [Export] public float MaxY { get; set; } = 0f;
 
 
     public Vector2 ScreenSize;
@@ -36,10 +35,37 @@ public partial class player : Area2D
 
         Position += velocity.Normalized() * Speed * (float)delta;
 
-        Vector2 min = new Vector2(MinX - halfSize.X, MinY - halfSize.Y);
-        Vector2 max = new Vector2(MaxX - halfSize.X, MaxY - halfSize.Y);
+        Vector2 min = new Vector2(MinX - halfSize.X, Position.Y);
+        Vector2 max = new Vector2(MaxX - halfSize.X, Position.Y);
         Position = Position.Clamp(min, max);
+
+        // Player shooting
+        if (Input.IsKeyPressed(Key.Space))
+        {
+            Shoot();
+        }
     } 
+
+    public void Shoot()
+    {
+        // Check if BulletScene is assigned
+        // and if the bullet can be instantiated
+        if (PlayerShootScene == null)
+        {
+            GD.Print("PlayerShootScene not assigned.");
+            return;
+        }
+        var bulletNode = PlayerShootScene.Instantiate();
+        if (bulletNode is Area2D bullet)
+        { 
+            bullet.GlobalPosition = GlobalPosition;
+            GetTree().Root.AddChild(bullet);
+        }
+        else
+        {
+            GD.PrintErr("BulletScene is not a PlayerBullet!");
+        }
+    }
 
     private void OnAreaEntered(Area2D area)
     {

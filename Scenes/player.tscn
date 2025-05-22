@@ -1,24 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://d3arvatk87hy5"]
+[gd_scene load_steps=5 format=3 uid="uid://d3arvatk87hy5"]
 
 [ext_resource type="Texture2D" uid="uid://okqw8qjj5lxr" path="res://sprites/player.png" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://cedm5e1yg4ruy" path="res://player.cs" id="1_onrkg"]
+[ext_resource type="PackedScene" uid="uid://c00e8mhnx0gns" path="res://PlayerShootScene.tscn" id="2_6t5aa"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cvnsp"]
-radius = 10.2455
-height = 25.5286
+radius = 31.0
+height = 115.5
 
 [node name="Player" type="Area2D"]
 disable_mode = 1
+collision_mask = 12
 input_pickable = false
 script = ExtResource("1_onrkg")
+PlayerShootScene = ExtResource("2_6t5aa")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(585, 916.25)
-scale = Vector2(0.494633, 0.5)
+scale = Vector2(0.3, 0.303)
 texture = ExtResource("1_4flbx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(585, 916.25)
-scale = Vector2(7.0275, 9.695)
 shape = SubResource("CapsuleShape2D_cvnsp")

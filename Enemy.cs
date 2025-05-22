@@ -11,6 +11,10 @@ public partial class Enemy : Area2D
 
     public override void _Ready()
     {
+        var collisionShape = GetNode<CollisionShape2D>("CollisionShape2D");
+        var shape = (RectangleShape2D)collisionShape.Shape;
+        base._Ready();
+        Connect("area_entered", new Callable(this, nameof(_on_Area2D_area_entered)));
     }
 
     public void Shoot()
