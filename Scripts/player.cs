@@ -71,6 +71,7 @@ public partial class player : Area2D
 		if (bulletNode is Area2D bullet)
 		{ 
 			bullet.GlobalPosition = GlobalPosition;
+			bullet.AddToGroup("PlayerBullet");
 			GetTree().Root.AddChild(bullet);
 		}
 		else
@@ -82,7 +83,12 @@ public partial class player : Area2D
 	private void OnAreaEntered(Area2D area)
 	{
 		GD.Print("Area entered: " + area.Name);
-		TakeDamage(1);
+		
+		if (area.IsInGroup("EnemyBullet"))
+		{
+			area.QueueFree();
+			TakeDamage(1);
+		}
 	}
 	
 	private void TakeDamage(int amount)
@@ -105,6 +111,13 @@ public partial class player : Area2D
 	private void Die()
 	{
 		GD.Print("Le joueur est mort !");
+		
+		var bullets = GetTree().GetNodesInGroup("EnemyBullet");
+		foreach (Node bullet in bullets)
+		{
+			bullet.QueueFree();
+		}
+		
 		QueueFree();
 		GetTree().ChangeSceneToFile("res://Scenes/main_menu.tscn");
 	}

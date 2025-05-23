@@ -152,8 +152,8 @@ text = "BACK"
 [node name="TextureRect" type="TextureRect" parent="."]
 z_index = -4096
 layout_mode = 0
-offset_right = 1193.0
-offset_bottom = 1072.0
+offset_right = 1202.0
+offset_bottom = 1081.0
 mouse_filter = 2
 texture = ExtResource("2_7vrkn")
 expand_mode = 1
