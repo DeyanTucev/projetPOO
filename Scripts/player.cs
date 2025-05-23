@@ -106,5 +106,6 @@ public partial class player : Area2D
 	{
 		GD.Print("Le joueur est mort !");
 		QueueFree();
+		GetTree().ChangeSceneToFile("res://Scenes/main_menu.tscn");
 	}
 }

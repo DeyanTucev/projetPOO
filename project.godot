@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Space Invaders"
-run/main_scene="uid://bs1euvp48cinf"
+run/main_scene="uid://c10u7oc3jo8xd"
 config/features=PackedStringArray("4.4", "C#", "Forward Plus")
 
 [display]

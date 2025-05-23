@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://d3arvatk87hy5" path="res://Scenes/player.tscn" id="2_jjvhh"]
 [ext_resource type="PackedScene" uid="uid://b207reh336uco" path="res://Scenes/EnemyContainer.tscn" id="3_kry3j"]
 [ext_resource type="PackedScene" uid="uid://ddfuk6y0h6nix" path="res://Scenes/HealthPoint.tscn" id="4_kry3j"]
-[ext_resource type="Script" uid="uid://dll515ogs4cn1" path="res://Scenes/HpLabel.cs" id="5_21xkr"]
+[ext_resource type="Script" uid="uid://dll515ogs4cn1" path="res://Scripts/HpLabel.cs" id="5_21xkr"]
 
 [node name="Main" type="Node2D"]
 
