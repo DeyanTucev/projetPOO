@@ -5,7 +5,7 @@
 [node name="MovementZone" type="Node2D"]
 
 [node name="TextureRect" type="TextureRect" parent="."]
-offset_right = 1199.0
-offset_bottom = 1077.0
+offset_right = 1202.0
+offset_bottom = 1085.0
 texture = ExtResource("1_8tsfm")
 expand_mode = 1

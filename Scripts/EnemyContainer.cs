@@ -21,6 +21,8 @@ public partial class EnemyContainer : Node2D
 	private Timer shootTimer;
 	private Random random = new Random();
 	private Vector2 initialPosition;
+	private Dictionary<int, int> lineDownCounters = new Dictionary<int, int>();
+	private int max_compteur_down = 10;
 
 	public override void _Ready()
 	{
@@ -42,6 +44,48 @@ public partial class EnemyContainer : Node2D
 			if (shouldMoveDown)
 			{
 				Position += Vector2.Down * MoveDownAmount;
+				
+				var enemiesByRow = new Dictionary<int, List<Enemy>>();
+				
+				foreach (Node child in GetChildren())
+				{
+					if (child is Enemy enemy)
+					{
+						int row = (int)enemy.GetMeta("row");
+						if (!enemiesByRow.ContainsKey(row))
+						{
+							enemiesByRow[row] = new List<Enemy>();
+						}
+						enemiesByRow[row].Add(enemy);
+					}
+				}
+				
+				float yThreshold = 1000f;
+				
+				foreach (var pair in enemiesByRow)
+				{
+					int row = pair.Key;
+					List<Enemy> enemies = pair.Value;
+					
+					bool lineReachedBottom = true;
+					foreach (var enemy in enemies)
+					{
+						if (enemy.GlobalPosition.Y < yThreshold)
+						{
+							lineReachedBottom = false;
+							break;
+						}
+					}
+					
+					if (lineReachedBottom)
+					{
+						GD.Print($"Ligne {row} a atteint le bas. Suppression.");
+						foreach (var enemy in enemies)
+						{
+							enemy.QueueFree();
+						}
+					}
+				}
 				shouldMoveDown = false;
 			}
 			else
@@ -96,13 +140,27 @@ public partial class EnemyContainer : Node2D
 
 		for (int y = 0; y < Rows; y++)
 		{
+			lineDownCounters[y] = 0;
+			
 			for (int x = 0; x < Columns; x++)
 			{
 				var enemy = EnemyScene.Instantiate<Enemy>();
 				float posX = startX + (x * HorizontalSpacing);
 				float posY = y * VerticalSpacing;
 				enemy.Position = new Vector2(posX, posY);
+				enemy.SetMeta("row", y);
 				AddChild(enemy);
+			}
+		}
+	}
+	
+	private void RemoveAllEnemies()
+	{
+		foreach (Node child in GetChildren())
+		{
+			if (child is Enemy)
+			{
+				child.QueueFree();
 			}
 		}
 	}
@@ -130,6 +188,18 @@ public partial class EnemyContainer : Node2D
 				AddChild(delayTimer);
 				delayTimer.Timeout += () =>
 				{
+					var enemyBullets = GetTree().GetNodesInGroup("EnemyBullet");
+					foreach (Node bullet in enemyBullets)
+					{
+						bullet.QueueFree();
+					}
+					
+					var playerBullets = GetTree().GetNodesInGroup("PlayerBullet");
+					foreach (Node bullet in playerBullets)
+					{
+						bullet.QueueFree();
+					}
+					
 					Position = initialPosition;
 					SpawnEnemies();
 				};

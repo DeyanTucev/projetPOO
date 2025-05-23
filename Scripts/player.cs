@@ -87,7 +87,7 @@ public partial class player : Area2D
 		if (area.IsInGroup("EnemyBullet"))
 		{
 			area.QueueFree();
-			TakeDamage(1);
+			//TakeDamage(1);
 		}
 	}
 	
@@ -112,8 +112,14 @@ public partial class player : Area2D
 	{
 		GD.Print("Le joueur est mort !");
 		
-		var bullets = GetTree().GetNodesInGroup("EnemyBullet");
-		foreach (Node bullet in bullets)
+		var enemyBullets = GetTree().GetNodesInGroup("EnemyBullet");
+		foreach (Node bullet in enemyBullets)
+		{
+			bullet.QueueFree();
+		}
+		
+		var playerBullets = GetTree().GetNodesInGroup("PlayerBullet");
+		foreach (Node bullet in playerBullets)
 		{
 			bullet.QueueFree();
 		}

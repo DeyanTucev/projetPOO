@@ -63,5 +63,4 @@ public partial class Enemy : Area2D
 			QueueFree();
 		}
 	}
-
 }
