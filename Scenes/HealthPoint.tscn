@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://ddfuk6y0h6nix"]
+
+[node name="HealthPoint" type="Node2D"]
+
+[node name="HpLabel" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 60
+text = "HP : 3"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
