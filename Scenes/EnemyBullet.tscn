@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://btej7t0v4mmmw"]
+[gd_scene load_steps=4 format=3 uid="uid://ciiailpy4xp15"]
 
 [ext_resource type="Script" uid="uid://dtt0aohwe0ql7" path="res://Scripts/EnemyBullet.cs" id="1_o7xso"]
 [ext_resource type="Texture2D" uid="uid://4xtqeregf5ob" path="res://sprites/enemyBullet.png" id="1_spmqd"]
