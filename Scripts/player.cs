@@ -87,7 +87,7 @@ public partial class player : Area2D
 		if (area.IsInGroup("EnemyBullet"))
 		{
 			area.QueueFree();
-			//TakeDamage(1);
+			TakeDamage(1);
 		}
 	}
 	
