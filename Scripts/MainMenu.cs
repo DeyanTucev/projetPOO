@@ -6,12 +6,15 @@ public partial class MainMenu : Control
 	private Control settingsMenu;
 	private Control creditsMenu;
 	private Control mainButtons;
+	private LineEdit pseudoInput;
 	
 	public override void _Ready()
 	{
 		settingsMenu = GetNode<Control>("CenterContainer/SettingsMenu");
 		creditsMenu = GetNode<Control>("CenterContainer/CreditsMenu");
 		mainButtons = GetNode<Control>("CenterContainer/MainButtons");
+		
+		pseudoInput = GetNode<LineEdit>("Pseudo");
 		
 		GetNode<Button>("CenterContainer/SettingsMenu/back").Pressed += CloseSettings;
 		GetNode<Button>("CenterContainer/CreditsMenu/back").Pressed += CloseCredits;
@@ -27,8 +30,21 @@ public partial class MainMenu : Control
 	
 	private void OnPlayPressed()
 	{
-		GD.Print("Lancement du jeu...");
-		GetTree().ChangeSceneToFile("res://Scenes/main.tscn");
+		string pseudo = pseudoInput.Text;
+		if (pseudo != "")
+		{
+			GD.Print("Pseudo du joueur : " + pseudo);
+		
+			Global global = (Global)GetNode("/root/Global");
+			global.Pseudo = pseudo;
+		
+			GD.Print("Lancement du jeu...");
+			GetTree().ChangeSceneToFile("res://Scenes/main.tscn");
+		}
+		else
+		{
+			GD.Print("Veuillez entrez un pseudo valide");
+		}
 	}
 	
 	private void OnSettingsPressed()
