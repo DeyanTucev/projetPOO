@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ddfuk6y0h6nix" path="res://Scenes/HealthPoint.tscn" id="4_kry3j"]
 [ext_resource type="Script" uid="uid://dll515ogs4cn1" path="res://Scripts/HpLabel.cs" id="5_21xkr"]
 [ext_resource type="PackedScene" uid="uid://da5erq1uhkggu" path="res://Scenes/PauseMenu.tscn" id="6_21xkr"]
-[ext_resource type="Script" path="res://Scripts/PauseMenu.cs" id="7_6bp64"]
+[ext_resource type="Script" uid="uid://bxmb7oke6ffvs" path="res://Scripts/PauseMenu.cs" id="7_6bp64"]
 
 [node name="Main" type="Node2D"]
 
