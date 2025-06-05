@@ -179,7 +179,6 @@ public partial class EnemyContainer : Node2D
 	public void OnEnemyKilled()
 	{
 		GD.Print("OnEnemyKilled called, checking enemy count...");
-
 		// Lance un mini timer pour vérifier après la suppression effective
 		var checkTimer = new Timer();
 		checkTimer.OneShot = true;

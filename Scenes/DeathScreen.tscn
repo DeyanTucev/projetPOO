@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://df7m5snlr85gm"]
+[gd_scene load_steps=3 format=3 uid="uid://f30sbff7ry0n"]
 
 [ext_resource type="Script" uid="uid://cj0r2top5bjyk" path="res://Scripts/DeathScreen.cs" id="1_4pnsc"]
 [ext_resource type="Texture2D" uid="uid://cixkjcmax18xk" path="res://sprites/starry-sky-stars-space-night-1266267.jpg" id="2_gb262"]
@@ -24,8 +24,8 @@ offset_top = 144.0
 offset_right = 1204.0
 offset_bottom = 470.0
 theme_override_font_sizes/font_size = 45
-text = "There is always more aliens to shoot soldiers.
-So get back in there and defend managed democracy"
+text = "There is always more aliens to shoot soldier.
+So get back in there and defend democracy"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -56,6 +56,7 @@ flat = true
 light_mask = 512
 visibility_layer = 512
 z_index = -4096
+layout_mode = 0
 offset_right = 1205.0
 offset_bottom = 1081.0
 mouse_filter = 2
