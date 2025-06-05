@@ -87,7 +87,7 @@ public partial class player : Area2D
 		if (area.IsInGroup("EnemyBullet"))
 		{
 			area.QueueFree();
-			//TakeDamage(1);
+			TakeDamage(1);
 		}
 	}
 	
@@ -125,6 +125,6 @@ public partial class player : Area2D
 		}
 		
 		QueueFree();
-		GetTree().ChangeSceneToFile("res://Scenes/main_menu.tscn");
+		GetTree().ChangeSceneToFile("res://Scenes/DeathScreen.tscn");
 	}
 }
