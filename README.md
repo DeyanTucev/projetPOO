@@ -16,7 +16,7 @@
 - **To be filled** 
 
 ## **Dependencies**
-- **To be filled** 
+- Microsoft.Data.Sqlite
 
 ### **Additional Tools Used**
 - **To be filled**

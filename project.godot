@@ -14,6 +14,11 @@ config/name="Space Invaders"
 run/main_scene="uid://c10u7oc3jo8xd"
 config/features=PackedStringArray("4.4", "C#", "Forward Plus")
 
+[autoload]
+
+Global="*res://Scripts/Global.cs"
+ScoreDb="*res://Scripts/ScoreDB.cs"
+
 [display]
 
 window/size/viewport_width=1200
