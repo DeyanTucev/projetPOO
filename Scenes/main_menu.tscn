@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://c10u7oc3jo8xd"]
+[gd_scene load_steps=4 format=3 uid="uid://fisi804xmmt1"]
 
 [ext_resource type="Script" uid="uid://bjla3bl35rt7n" path="res://Scripts/MainMenu.cs" id="1_06t4h"]
 [ext_resource type="Texture2D" uid="uid://cixkjcmax18xk" path="res://sprites/starry-sky-stars-space-night-1266267.jpg" id="2_7vrkn"]
@@ -12,8 +12,6 @@ script = ExtResource("1_06t4h")
 
 [node name="Title" type="Label" parent="."]
 layout_mode = 0
-offset_right = 1193.0
-offset_bottom = 255.0
 offset_left = 3.0
 offset_top = 9.0
 offset_right = 1197.0

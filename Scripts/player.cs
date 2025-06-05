@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Threading.Tasks;
 
 public partial class player : Area2D
 {
@@ -16,6 +17,26 @@ public partial class player : Area2D
 	public Vector2 ScreenSize;
 	private Vector2 halfSize;
 	private int score = 0;
+	private bool tookDMG = false;
+
+private async Task BlinkEffect()
+{
+    tookDMG = true;
+    float totalTime = 1.0f;
+    float blinkInterval = 0.1f;
+    float elapsed = 0f;
+
+    while (elapsed < totalTime)
+    {
+        Visible = !Visible;
+        await ToSignal(GetTree().CreateTimer(blinkInterval), "timeout");
+        elapsed += blinkInterval;
+    }
+
+    Visible = true;
+    tookDMG = false;
+}
+
 
 	public override void _Ready()
 	{
@@ -114,8 +135,12 @@ public partial class player : Area2D
 		}
 	}
 	
-	private void TakeDamage(int amount)
+	private async void TakeDamage(int amount)
 	{
+		if (tookDMG){
+			return;
+		}
+        	
 		currentHp -= amount;
 		currentHp = Mathf.Max(currentHp, 0);
 		
@@ -128,6 +153,7 @@ public partial class player : Area2D
 		else
 		{
 			GD.Print($"HP : {currentHp}");
+			await BlinkEffect();
 		}
 	}
 	
