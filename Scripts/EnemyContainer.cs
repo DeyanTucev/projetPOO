@@ -13,6 +13,7 @@ public partial class EnemyContainer : Node2D
 	[Export] public float MoveDownAmount = 50f;
 	[Export] public float LeftBoundary = 100f;
 	[Export] public float RightBoundary = 1100f;
+	[Export] public float BottomBoundary = 1000f; 
 
 	private Vector2 _direction = Vector2.Right;
 	private float moveTimer = 0f;
@@ -80,10 +81,20 @@ public partial class EnemyContainer : Node2D
 					if (lineReachedBottom)
 					{
 						GD.Print($"Ligne {row} a atteint le bas. Suppression.");
-						foreach (var enemy in enemies)
+						var enemyBullets = GetTree().GetNodesInGroup("EnemyBullet");
+						foreach (Node bullet in enemyBullets)
 						{
-							enemy.QueueFree();
+							bullet.QueueFree();
 						}
+						
+						var playerBullets = GetTree().GetNodesInGroup("PlayerBullet");
+						foreach (Node bullet in playerBullets)
+						{
+							bullet.QueueFree();
+						}
+						
+						QueueFree();
+						GetTree().ChangeSceneToFile("res://Scenes/DeathScreen.tscn");
 					}
 				}
 				shouldMoveDown = false;
@@ -168,7 +179,6 @@ public partial class EnemyContainer : Node2D
 	public void OnEnemyKilled()
 	{
 		GD.Print("OnEnemyKilled called, checking enemy count...");
-
 		// Lance un mini timer pour vérifier après la suppression effective
 		var checkTimer = new Timer();
 		checkTimer.OneShot = true;
