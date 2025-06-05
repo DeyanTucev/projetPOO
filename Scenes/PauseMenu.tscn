@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://da5erq1uhkggu"]
+
+[ext_resource type="Texture2D" uid="uid://ce46v4w2obxno" path="res://sprites/bouttons_Pause.png" id="1_lj4oq"]
+
+[node name="PauseMenu" type="Node2D"]
+
+[node name="PauseButton" type="Button" parent="."]
+process_mode = 2
+offset_left = 1082.0
+offset_right = 1203.0
+offset_bottom = 115.0
+icon = ExtResource("1_lj4oq")
+expand_icon = true

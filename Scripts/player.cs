@@ -87,7 +87,10 @@ public partial class player : Area2D
 		if (area.IsInGroup("EnemyBullet") || area.IsInGroup("Enemy"))
 		{
 			area.QueueFree();
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7e16a741b2114d62ef1444b4b7e9417f2dfdb7c5
 			
 			if (area.IsInGroup("EnemyBullet"))
 			{
