@@ -18,6 +18,8 @@ public partial class player : Area2D
 	private Vector2 halfSize;
 	private int score = 0;
 	private bool tookDMG = false;
+	private Global globalPseudo;
+	private string pseudo = "";
 
 private async Task BlinkEffect()
 {
@@ -46,6 +48,10 @@ private async Task BlinkEffect()
 		ShootTimer = GetNode<Timer>("ShootTimer");
 		ScreenSize = GetViewportRect().Size;
 
+		
+		Global global = GetNode<Global>("/root/Global");
+		string pseudo = global.Pseudo;
+
 		var collisionShape = GetNode<CollisionShape2D>("CollisionShape2D");
 		var shape = (CapsuleShape2D)collisionShape.Shape;
 
@@ -64,6 +70,7 @@ private async Task BlinkEffect()
 	}
 		public override void _Process(double delta)
 	{
+
 		Vector2 velocity = Vector2.Zero;
 
 		if (Input.IsKeyPressed(Key.A) || Input.IsKeyPressed(Key.Left))
@@ -172,8 +179,8 @@ private async Task BlinkEffect()
 		{
 			bullet.QueueFree();
 		}
-		
 		QueueFree();
 		GetTree().ChangeSceneToFile("res://Scenes/DeathScreen.tscn");
+		GetNode<ScoreDB>("C:/scores.db").SaveScore(pseudo, score);
 	}
 }

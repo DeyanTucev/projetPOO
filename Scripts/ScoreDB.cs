@@ -8,7 +8,7 @@ public partial class ScoreDB : Node
 
     public override void _Ready()
     {
-        dbPath = ProjectSettings.GlobalizePath("../scores.db");
+        dbPath = ProjectSettings.GlobalizePath("C:/scores.db");
         CreateDatabaseIfNeeded();
 
     }
@@ -38,7 +38,6 @@ public partial class ScoreDB : Node
         cmd.CommandText = @"INSERT INTO Scores (playerName, score) VALUES ($username, $score)";
         cmd.Parameters.AddWithValue("$username", playerName);
         cmd.Parameters.AddWithValue("$score", score);
-        cmd.ExecuteNonQuery();
     }
         
 }
