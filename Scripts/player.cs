@@ -86,9 +86,8 @@ public partial class player : Area2D
 		
 		if (area.IsInGroup("EnemyBullet") || area.IsInGroup("Enemy"))
 		{
-<<<<<<< HEAD
 			area.QueueFree();
-=======
+
 			
 			if (area.IsInGroup("EnemyBullet"))
 			{
@@ -103,7 +102,6 @@ public partial class player : Area2D
 				return;
 			}
 			
->>>>>>> 95686917480869c9d6b400ad03d07653a03b1220
 			TakeDamage(1);
 		}
 	}
