@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://d14qqpy43oei7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_mq4wf"]
+font_size = 54
+
+[node name="Node2D" type="Node2D"]
+
+[node name="ScoreLabel" type="Label" parent="."]
+offset_left = 452.0
+offset_top = 19.0
+offset_right = 670.0
+offset_bottom = 93.0
+text = "Score : 0"
+label_settings = SubResource("LabelSettings_mq4wf")
+
+[node name="Timer" type="Timer" parent="."]
