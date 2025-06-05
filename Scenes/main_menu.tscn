@@ -12,8 +12,6 @@ script = ExtResource("1_06t4h")
 
 [node name="Title" type="Label" parent="."]
 layout_mode = 0
-offset_right = 1193.0
-offset_bottom = 255.0
 offset_left = 3.0
 offset_top = 9.0
 offset_right = 1197.0

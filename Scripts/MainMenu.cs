@@ -8,6 +8,11 @@ public partial class MainMenu : Control
 	private Control mainButtons;
 	private LineEdit pseudoInput;
 	
+	private HSlider volumeSlider;
+	private HSlider musicSlider;
+	private HSlider sfxSlider;
+	private CheckBox fullScreenToggle;
+	
 	public override void _Ready()
 	{
 		settingsMenu = GetNode<Control>("CenterContainer/SettingsMenu");
@@ -15,6 +20,11 @@ public partial class MainMenu : Control
 		mainButtons = GetNode<Control>("CenterContainer/MainButtons");
 		
 		pseudoInput = GetNode<LineEdit>("Pseudo");
+		
+		volumeSlider = GetNode<HSlider>("CenterContainer/SettingsMenu/mainvolslider");
+		musicSlider = GetNode<HSlider>("CenterContainer/SettingsMenu/musicvolslider");
+		sfxSlider = GetNode<HSlider>("CenterContainer/SettingsMenu/sfxvolslider");
+		fullScreenToggle = GetNode<CheckBox>("CenterContainer/SettingsMenu/fullscreen");
 		
 		GetNode<Button>("CenterContainer/SettingsMenu/back").Pressed += CloseSettings;
 		GetNode<Button>("CenterContainer/CreditsMenu/back").Pressed += CloseCredits;
@@ -36,7 +46,14 @@ public partial class MainMenu : Control
 			GD.Print("Pseudo du joueur : " + pseudo);
 		
 			Global global = (Global)GetNode("/root/Global");
+			
 			global.Pseudo = pseudo;
+			global.Volume = (float)volumeSlider.Value;
+			global.Music = (float)musicSlider.Value;
+			global.Sfx = (float)sfxSlider.Value;
+			global.Fullscreen = fullScreenToggle.ButtonPressed;
+			
+			GD.Print($"Pseudo : {global.Pseudo}, Volume : {global.Volume}, Musique : {global.Music}, Effets : {global.Sfx}, Plein écran : {global.Fullscreen}");
 		
 			GD.Print("Lancement du jeu...");
 			GetTree().ChangeSceneToFile("res://Scenes/main.tscn");
