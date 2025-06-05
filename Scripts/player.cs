@@ -15,6 +15,7 @@ public partial class player : Area2D
 	private Timer ShootTimer;
 	public Vector2 ScreenSize;
 	private Vector2 halfSize;
+	private int score = 0;
 
 	public override void _Ready()
 	{
@@ -31,8 +32,16 @@ public partial class player : Area2D
 		base._Ready();
 		Connect("area_entered", new Callable(this, nameof(OnAreaEntered)));
 	}
-
-	public override void _Process(double delta)
+	public void AddScore(int amount)
+	{
+		var ScoreLabel = GetNode<Label>("../Node2D/ScoreLabel");
+		score += amount;
+		if (ScoreLabel != null)
+			ScoreLabel.Text = $"Score: {score}";
+		else
+			GD.PrintErr("ScoreLabel is not assigned!");
+	}
+		public override void _Process(double delta)
 	{
 		Vector2 velocity = Vector2.Zero;
 
@@ -86,12 +95,7 @@ public partial class player : Area2D
 		
 		if (area.IsInGroup("EnemyBullet") || area.IsInGroup("Enemy"))
 		{
-			area.QueueFree();
-<<<<<<< HEAD
-
-=======
->>>>>>> 7e16a741b2114d62ef1444b4b7e9417f2dfdb7c5
-			
+			area.QueueFree();			
 			if (area.IsInGroup("EnemyBullet"))
 			{
 				GD.Print("Collision balle ennemi.");
