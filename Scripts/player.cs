@@ -82,11 +82,28 @@ public partial class player : Area2D
 
 	private void OnAreaEntered(Area2D area)
 	{
-		GD.Print("Area entered: " + area.Name);
+		GD.Print("Zone entrée: " + area.Name);
 		
-		if (area.IsInGroup("EnemyBullet"))
+		if (area.IsInGroup("EnemyBullet") || area.IsInGroup("Enemy"))
 		{
+<<<<<<< HEAD
 			area.QueueFree();
+=======
+			
+			if (area.IsInGroup("EnemyBullet"))
+			{
+				GD.Print("Collision balle ennemi.");
+				area.QueueFree();
+			}
+
+			if (area.IsInGroup("Enemy"))
+			{
+				GD.Print("Collision ennemi.");
+				Die();
+				return;
+			}
+			
+>>>>>>> 95686917480869c9d6b400ad03d07653a03b1220
 			TakeDamage(1);
 		}
 	}
