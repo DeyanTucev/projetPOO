@@ -10,4 +10,5 @@ offset_left = 1082.0
 offset_right = 1203.0
 offset_bottom = 115.0
 icon = ExtResource("1_lj4oq")
+icon_alignment = 1
 expand_icon = true

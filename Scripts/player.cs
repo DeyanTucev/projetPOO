@@ -95,7 +95,8 @@ public partial class player : Area2D
 		
 		if (area.IsInGroup("EnemyBullet") || area.IsInGroup("Enemy"))
 		{
-			area.QueueFree();			
+			area.QueueFree();
+			
 			if (area.IsInGroup("EnemyBullet"))
 			{
 				GD.Print("Collision balle ennemi.");
