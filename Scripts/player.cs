@@ -181,6 +181,6 @@ private async Task BlinkEffect()
 		}
 		QueueFree();
 		GetTree().ChangeSceneToFile("res://Scenes/DeathScreen.tscn");
-		GetNode<ScoreDB>("C:/scores.db").SaveScore(pseudo, score);
+		GetNode<ScoreDB>("user://scores.db").SaveScore(pseudo, score);
 	}
 }

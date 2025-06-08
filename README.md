@@ -4,7 +4,6 @@
 - **Chris Brandt**  
 - **Deyan Tucev**
 - **Samuel Gergely**
-- **Leticia Dépierraz**
 
 ## **Overview**
 *Jack Invaders* is a small game heavily inspired by the popular classic *Space Invaders*.
@@ -17,7 +16,8 @@
 
 ## **Dependencies**
 - Microsoft.Data.Sqlite
-
+    - To install, run :  
+    dotnet add package Microsoft.Data.Sqlite
 ### **Additional Tools Used**
 - **To be filled**
 
@@ -30,5 +30,4 @@
 ## **Contacts**
 chris.brandt@eduvaud.ch  
 deyan.tucev@eduvaud.ch  
-samuel.gergely@eduvaud.ch  
-leticia.depierraz@eduvaud.ch  
+samuel.gergely@eduvaud.ch

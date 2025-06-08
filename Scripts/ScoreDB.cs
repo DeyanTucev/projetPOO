@@ -8,7 +8,7 @@ public partial class ScoreDB : Node
 
     public override void _Ready()
     {
-        dbPath = ProjectSettings.GlobalizePath("C:/scores.db");
+        dbPath = ProjectSettings.GlobalizePath("user://scores.db");
         CreateDatabaseIfNeeded();
 
     }
