@@ -21,20 +21,20 @@ public partial class player : Area2D
 
 private async Task BlinkEffect()
 {
-    tookDMG = true;
-    float totalTime = 1.0f;
-    float blinkInterval = 0.1f;
-    float elapsed = 0f;
+	tookDMG = true;
+	float totalTime = 1.0f;
+	float blinkInterval = 0.1f;
+	float elapsed = 0f;
 
-    while (elapsed < totalTime)
-    {
-        Visible = !Visible;
-        await ToSignal(GetTree().CreateTimer(blinkInterval), "timeout");
-        elapsed += blinkInterval;
-    }
+	while (elapsed < totalTime)
+	{
+		Visible = !Visible;
+		await ToSignal(GetTree().CreateTimer(blinkInterval), "timeout");
+		elapsed += blinkInterval;
+	}
 
-    Visible = true;
-    tookDMG = false;
+	Visible = true;
+	tookDMG = false;
 }
 
 
@@ -140,7 +140,7 @@ private async Task BlinkEffect()
 		if (tookDMG){
 			return;
 		}
-        	
+			
 		currentHp -= amount;
 		currentHp = Mathf.Max(currentHp, 0);
 		
