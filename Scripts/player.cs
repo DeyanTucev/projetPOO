@@ -1,6 +1,8 @@
 using Godot;
 using System;
 using System.Threading.Tasks;
+using System.Data.SQLite;
+using System.IO;
 
 public partial class player : Area2D
 {
@@ -21,23 +23,23 @@ public partial class player : Area2D
 	private Global globalPseudo;
 	private string pseudo = "";
 
-private async Task BlinkEffect()
-{
-	tookDMG = true;
-	float totalTime = 1.0f;
-	float blinkInterval = 0.1f;
-	float elapsed = 0f;
-
-	while (elapsed < totalTime)
+	private async Task BlinkEffect()
 	{
-		Visible = !Visible;
-		await ToSignal(GetTree().CreateTimer(blinkInterval), "timeout");
-		elapsed += blinkInterval;
-	}
+		tookDMG = true;
+		float totalTime = 1.0f;
+		float blinkInterval = 0.1f;
+		float elapsed = 0f;
 
-	Visible = true;
-	tookDMG = false;
-}
+		while (elapsed < totalTime)
+		{
+			Visible = !Visible;
+			await ToSignal(GetTree().CreateTimer(blinkInterval), "timeout");
+			elapsed += blinkInterval;
+		}
+
+		Visible = true;
+		tookDMG = false;
+	}
 
 
 	public override void _Ready()
@@ -47,11 +49,7 @@ private async Task BlinkEffect()
 		
 		ShootTimer = GetNode<Timer>("ShootTimer");
 		ScreenSize = GetViewportRect().Size;
-
 		
-		Global global = GetNode<Global>("/root/Global");
-		string pseudo = global.Pseudo;
-
 		var collisionShape = GetNode<CollisionShape2D>("CollisionShape2D");
 		var shape = (CapsuleShape2D)collisionShape.Shape;
 
@@ -180,7 +178,43 @@ private async Task BlinkEffect()
 			bullet.QueueFree();
 		}
 		QueueFree();
+		
+		Global global = (Global)GetNode("/root/Global");
+		string pseudo = global.Pseudo;
+		
+		GD.Print(pseudo);
+		
+		try
+		{
+			string exeDir = Path.GetDirectoryName(OS.GetExecutablePath());
+			string dbPath = Path.Combine(exeDir, "score.db");
+			
+			using var connection = new SQLiteConnection($"Data Source={dbPath}");
+			connection.Open();
+			
+			using var command = connection.CreateCommand();
+			command.CommandText = @"
+				CREATE TABLE IF NOT EXISTS Scores (
+					Id INTEGER PRIMARY KEY AUTOINCREMENT,
+					Pseudo TEXT NOT NULL,
+					Score INTEGER NOT NULL,
+					Date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+				);";
+			command.ExecuteNonQuery();
+			
+			using var insertCommand = connection.CreateCommand();
+			insertCommand.CommandText = "INSERT INTO Scores (Pseudo, Score) VALUES (@pseudo, @score);";
+			insertCommand.Parameters.AddWithValue("@pseudo", pseudo);
+			insertCommand.Parameters.AddWithValue("@score", score);
+			insertCommand.ExecuteNonQuery();
+			
+			GD.Print("Score sauvgardé !");
+		}
+		catch (Exception ex)
+		{
+			GD.PrintErr("Erreur : " + ex.Message);
+		}
+		
 		GetTree().ChangeSceneToFile("res://Scenes/DeathScreen.tscn");
-		GetNode<ScoreDB>("user://scores.db").SaveScore(pseudo, score);
 	}
 }
