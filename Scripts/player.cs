@@ -186,7 +186,7 @@ public partial class player : Area2D
 		try
 		{
 			string exeDir = Path.GetDirectoryName(OS.GetExecutablePath());
-			string dbPath = Path.Combine(exeDir, "./scores.db");
+			string dbPath = ScoreDB.GetDBPath();
 			
 			using var connection = new SQLiteConnection($"Data Source={dbPath}");
 			connection.Open();

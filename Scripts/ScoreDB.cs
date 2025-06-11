@@ -8,7 +8,7 @@ public partial class ScoreDB : Node
 
 	public override void _Ready()
 	{
-		dbPath = ProjectSettings.GlobalizePath("./scores.db");
+		dbPath = GetDBPath();
 		CreateDatabaseIfNeeded();
 		GD.Print("DB path: " + dbPath);
 
@@ -29,6 +29,11 @@ public partial class ScoreDB : Node
 				)";
 			cmd.ExecuteNonQuery();
 		}
+	}
+
+	public static string GetDBPath()
+	{
+		return ProjectSettings.GlobalizePath("./scores.db");
 	}
 		
 }
