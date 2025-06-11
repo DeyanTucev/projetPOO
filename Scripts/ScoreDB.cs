@@ -10,6 +10,7 @@ public partial class ScoreDB : Node
 	{
 		dbPath = ProjectSettings.GlobalizePath("./scores.db");
 		CreateDatabaseIfNeeded();
+		GD.Print("DB path: " + dbPath);
 
 	}
 
@@ -21,23 +22,13 @@ public partial class ScoreDB : Node
 			conn.Open();
 			var cmd = conn.CreateCommand();
 			cmd.CommandText = @"
-				CREATE TABLE IF NOT EXISTS Scores (
+				CREATE TABLE IF NOT EXISTS playerScore (
 					ID INTEGER PRIMARY KEY AUTOINCREMENT,
-					playerName TEXT NOT NULL,
-					score INTEGER NOT NULL
+					Pseudo TEXT NOT NULL,
+					Score INTEGER NOT NULL
 				)";
 			cmd.ExecuteNonQuery();
 		}
-	}
-
-	public void SaveScore(string playerName, int score)
-	{
-		using var conn = new SqliteConnection($"Data Source={dbPath}");
-		conn.Open();
-		var cmd = conn.CreateCommand();
-		cmd.CommandText = @"INSERT INTO Scores (playerName, score) VALUES ($username, $score)";
-		cmd.Parameters.AddWithValue("$username", playerName);
-		cmd.Parameters.AddWithValue("$score", score);
 	}
 		
 }

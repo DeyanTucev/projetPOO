@@ -177,7 +177,6 @@ public partial class player : Area2D
 		{
 			bullet.QueueFree();
 		}
-		QueueFree();
 		
 		Global global = (Global)GetNode("/root/Global");
 		string pseudo = global.Pseudo;
@@ -187,23 +186,13 @@ public partial class player : Area2D
 		try
 		{
 			string exeDir = Path.GetDirectoryName(OS.GetExecutablePath());
-			string dbPath = Path.Combine(exeDir, "score.db");
+			string dbPath = Path.Combine(exeDir, "./scores.db");
 			
 			using var connection = new SQLiteConnection($"Data Source={dbPath}");
 			connection.Open();
 			
-			using var command = connection.CreateCommand();
-			command.CommandText = @"
-				CREATE TABLE IF NOT EXISTS Scores (
-					Id INTEGER PRIMARY KEY AUTOINCREMENT,
-					Pseudo TEXT NOT NULL,
-					Score INTEGER NOT NULL,
-					Date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-				);";
-			command.ExecuteNonQuery();
-			
 			using var insertCommand = connection.CreateCommand();
-			insertCommand.CommandText = "INSERT INTO Scores (Pseudo, Score) VALUES (@pseudo, @score);";
+			insertCommand.CommandText = @"INSERT INTO playerScore (Pseudo, Score) VALUES (@pseudo, @score);";
 			insertCommand.Parameters.AddWithValue("@pseudo", pseudo);
 			insertCommand.Parameters.AddWithValue("@score", score);
 			insertCommand.ExecuteNonQuery();
@@ -214,6 +203,7 @@ public partial class player : Area2D
 		{
 			GD.PrintErr("Erreur : " + ex.Message);
 		}
+		QueueFree();
 		
 		GetTree().ChangeSceneToFile("res://Scenes/DeathScreen.tscn");
 	}
