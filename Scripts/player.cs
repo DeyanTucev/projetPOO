@@ -69,12 +69,14 @@ public partial class player : Area2D
 		if (ScoreLabel != null)
 		{
 			ScoreLabel.Text = $"Score: {score}";
+			amount = 0;
 		}
 		else
 		{
 			GD.PrintErr("ScoreLabel is not assigned!");
 		}
 	}
+	
 	public override void _Process(double delta)
 	{
 
