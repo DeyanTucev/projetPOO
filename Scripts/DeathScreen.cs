@@ -8,7 +8,7 @@ public partial class DeathScreen : Control
 	public override void _Ready()
 	{
 		DeathButtons = GetNode<Control>("CenterContainer/DeathButtons");
-		
+
 		GetNode<Button>("CenterContainer/DeathButtons/Replay").Pressed += OnPlayPressed;
 		GetNode<Button>("CenterContainer/DeathButtons/back").Pressed += OnBackPressed;
 	}

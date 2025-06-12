@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://d3arvatk87hy5"]
+[gd_scene load_steps=8 format=3 uid="uid://d3arvatk87hy5"]
 
 [ext_resource type="Texture2D" uid="uid://okqw8qjj5lxr" path="res://assets/sprites/player.png" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://cedm5e1yg4ruy" path="res://Scripts/player.cs" id="1_onrkg"]
 [ext_resource type="PackedScene" uid="uid://c00e8mhnx0gns" path="res://Scenes/PlayerShootScene.tscn" id="2_6t5aa"]
 [ext_resource type="AudioStream" uid="uid://dkeqe5cedcv4u" path="res://assets/Sounds/SFX/laser-312360.mp3" id="4_vgqql"]
+[ext_resource type="AudioStream" uid="uid://x8h3oesmwqqd" path="res://assets/Sounds/SFX/male-death-scream-horror-352706.mp3" id="5_fkybt"]
+[ext_resource type="AudioStream" uid="uid://7wnjgq36y3ht" path="res://assets/Sounds/SFX/8-bit-video-game-lose-sound-version-1-145828.mp3" id="6_x3wgy"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cvnsp"]
 radius = 31.0
@@ -32,3 +34,9 @@ one_shot = true
 
 [node name="ShootSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_vgqql")
+
+[node name="OuchSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_fkybt")
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_x3wgy")

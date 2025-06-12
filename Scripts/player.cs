@@ -23,6 +23,8 @@ public partial class player : Area2D
 	private Global globalPseudo;
 	private string pseudo = "";
 	private AudioStreamPlayer2D shootSound;
+	private AudioStreamPlayer2D OuchSound;
+	private AudioStreamPlayer2D DeathSound;
 
 	private async Task BlinkEffect()
 	{
@@ -54,6 +56,8 @@ public partial class player : Area2D
 		var collisionShape = GetNode<CollisionShape2D>("CollisionShape2D");
 		var shape = (CapsuleShape2D)collisionShape.Shape;
 		shootSound = GetNode<AudioStreamPlayer2D>("ShootSound");
+		OuchSound = GetNode<AudioStreamPlayer2D>("OuchSound");
+		DeathSound = GetNode<AudioStreamPlayer2D>("DeathSound");
 		// Connexion du signal de collision
 		base._Ready();
 		Connect("area_entered", new Callable(this, nameof(OnAreaEntered)));
@@ -148,6 +152,7 @@ public void Shoot()
 		
 		if (area.IsInGroup("EnemyBullet") || area.IsInGroup("Enemy"))
 		{
+			OuchSound.Play();
 			area.QueueFree();
 			
 			if (area.IsInGroup("EnemyBullet"))
@@ -192,7 +197,7 @@ public void Shoot()
 	private void Die()
 	{
 		GD.Print("Le joueur est mort !");
-		
+		DeathSound.Play();
 		var enemyBullets = GetTree().GetNodesInGroup("EnemyBullet");
 		foreach (Node bullet in enemyBullets)
 		{
