@@ -58,6 +58,7 @@ public partial class player : Area2D
 		base._Ready();
 		Connect("area_entered", new Callable(this, nameof(OnAreaEntered)));
 	}
+	
 	public void AddScore(int amount)
 	{
 		var ScoreLabel = GetNode<Label>("../Node2D/ScoreLabel");
@@ -206,6 +207,9 @@ public void Shoot()
 		
 		Global global = (Global)GetNode("/root/Global");
 		string pseudo = global.Pseudo;
+		
+		Global global2 = (Global)GetNode("/root/Global");
+		global2.Score = score;
 		
 		GD.Print(pseudo);
 		

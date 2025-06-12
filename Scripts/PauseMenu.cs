@@ -1,5 +1,8 @@
 using Godot;
 using System;
+using System.Threading.Tasks;
+using System.Data.SQLite;
+using System.IO;
 
 public partial class PauseMenu : Node2D
 {
@@ -7,8 +10,12 @@ public partial class PauseMenu : Node2D
 	private Timer retryTimer;
 	private Control PauseBox;
 	
+	private int score;
+	
 	public override void _Ready()
 	{
+		score = ((Global)GetNode("/root/Global")).Score;
+		
 		pauseButton = GetNode<Button>("PauseButton");
 		PauseBox = GetNode<Control>("CenterContainer/PauseBox");
 		
@@ -54,6 +61,37 @@ public partial class PauseMenu : Node2D
 	public void EndGame()
 	{
 		GD.Print("EndGame appelé !");
+		
+		Global global = (Global)GetNode("/root/Global");
+		string pseudo = global.Pseudo;
+		
+		GD.Print(pseudo);
+		
+		try
+		{
+			string exeDir = Path.GetDirectoryName(OS.GetExecutablePath());
+			string dbPath = ScoreDB.GetDBPath();
+			
+			using var connection = new SQLiteConnection($"Data Source={dbPath}");
+			connection.Open();
+			
+			using var insertCommand = connection.CreateCommand();
+			insertCommand.CommandText = @"
+			INSERT INTO playerScore (Pseudo, Score)
+			VALUES (@pseudo, @score)
+			ON CONFLICT(Pseudo) DO UPDATE SET Score =
+				CASE WHEN @score > Score THEN @score ELSE Score END;
+			";
+			insertCommand.Parameters.AddWithValue("@pseudo", pseudo);
+			insertCommand.Parameters.AddWithValue("@score", score);
+			insertCommand.ExecuteNonQuery();
+			
+			GD.Print("Score sauvgardé !");
+		}
+		catch (Exception ex)
+		{
+			GD.PrintErr("Erreur : " + ex.Message);
+		}
 		GetTree().Paused = false;
 		GetTree().ChangeSceneToFile("res://Scenes/main_menu.tscn");
 	}
