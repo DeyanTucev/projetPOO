@@ -100,44 +100,44 @@ public partial class player : Area2D
 
 public void Shoot()
 {
-    if (PlayerShootScene == null)
-    {
-        GD.Print("PlayerShootScene not assigned.");
-        return;
-    }
+	if (PlayerShootScene == null)
+	{
+		GD.Print("PlayerShootScene not assigned.");
+		return;
+	}
 
-    // Crée un nouveau AudioStreamPlayer2D pour ne pas couper les sons précédents
-    var shootSoundInstance = new AudioStreamPlayer2D();
-    shootSoundInstance.Stream = shootSound.Stream; // reprend le même son que le node existant
-    AddChild(shootSoundInstance);
-    shootSoundInstance.Play();
+	// Crée un nouveau AudioStreamPlayer2D pour ne pas couper les sons précédents
+	var shootSoundInstance = new AudioStreamPlayer2D();
+	shootSoundInstance.Stream = shootSound.Stream; // reprend le même son que le node existant
+	AddChild(shootSoundInstance);
+	shootSoundInstance.Play();
 
-    // Supprimer le son après la durée du stream
-    float duration = (float)shootSoundInstance.Stream.GetLength();
-    var timer = new Timer();
-    timer.WaitTime = duration;
-    timer.OneShot = true;
-    AddChild(timer);
-    timer.Start();
+	// Supprimer le son après la durée du stream
+	float duration = (float)shootSoundInstance.Stream.GetLength();
+	var timer = new Timer();
+	timer.WaitTime = duration;
+	timer.OneShot = true;
+	AddChild(timer);
+	timer.Start();
 
-    timer.Timeout += () =>
-    {
-        shootSoundInstance.QueueFree();
-        timer.QueueFree();
-    };
+	timer.Timeout += () =>
+	{
+		shootSoundInstance.QueueFree();
+		timer.QueueFree();
+	};
 
-    // Instancier la balle
-    var bulletNode = PlayerShootScene.Instantiate();
-    if (bulletNode is Area2D bullet)
-    {
-        bullet.GlobalPosition = GlobalPosition;
-        bullet.AddToGroup("PlayerBullet");
-        GetTree().Root.AddChild(bullet);
-    }
-    else
-    {
-        GD.PrintErr("BulletScene is not a PlayerBullet!");
-    }}
+	// Instancier la balle
+	var bulletNode = PlayerShootScene.Instantiate();
+	if (bulletNode is Area2D bullet)
+	{
+		bullet.GlobalPosition = GlobalPosition;
+		bullet.AddToGroup("PlayerBullet");
+		GetTree().Root.AddChild(bullet);
+	}
+	else
+	{
+		GD.PrintErr("BulletScene is not a PlayerBullet!");
+	}}
 
 	private void OnAreaEntered(Area2D area)
 	{
