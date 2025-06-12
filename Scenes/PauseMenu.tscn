@@ -12,3 +12,18 @@ offset_bottom = 115.0
 icon = ExtResource("1_lj4oq")
 icon_alignment = 1
 expand_icon = true
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+offset_left = 985.0
+offset_top = 115.0
+offset_right = 1202.0
+offset_bottom = 274.0
+
+[node name="PauseBox" type="VBoxContainer" parent="CenterContainer"]
+visible = false
+layout_mode = 2
+
+[node name="endButton" type="Button" parent="CenterContainer/PauseBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "QUITTER"
