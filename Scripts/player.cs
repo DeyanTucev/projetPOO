@@ -196,7 +196,12 @@ public partial class player : Area2D
 			connection.Open();
 			
 			using var insertCommand = connection.CreateCommand();
-			insertCommand.CommandText = @"INSERT INTO playerScore (Pseudo, Score) VALUES (@pseudo, @score);";
+			insertCommand.CommandText = @"
+			INSERT INTO playerScore (Pseudo, Score)
+			VALUES (@pseudo, @score)
+			ON CONFLICT(Pseudo) DO UPDATE SET Score =
+				CASE WHEN @score > Score THEN @score ELSE Score END;
+			";
 			insertCommand.Parameters.AddWithValue("@pseudo", pseudo);
 			insertCommand.Parameters.AddWithValue("@score", score);
 			insertCommand.ExecuteNonQuery();
