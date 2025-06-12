@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://da5erq1uhkggu"]
 
-[ext_resource type="Texture2D" uid="uid://ce46v4w2obxno" path="res://sprites/bouttons_Pause.png" id="1_lj4oq"]
+[ext_resource type="Texture2D" uid="uid://ce46v4w2obxno" path="res://assets/sprites/bouttons_Pause.png" id="1_lj4oq"]
 
 [node name="PauseMenu" type="Node2D"]
 

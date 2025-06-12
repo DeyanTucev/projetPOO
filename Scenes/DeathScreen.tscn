@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://f30sbff7ry0n"]
 
 [ext_resource type="Script" uid="uid://cj0r2top5bjyk" path="res://Scripts/DeathScreen.cs" id="1_4pnsc"]
-[ext_resource type="Texture2D" uid="uid://cixkjcmax18xk" path="res://sprites/starry-sky-stars-space-night-1266267.jpg" id="2_gb262"]
+[ext_resource type="Texture2D" uid="uid://cixkjcmax18xk" path="res://assets/sprites/starry-sky-stars-space-night-1266267.jpg" id="2_gb262"]
 
 [node name="DeathScreen" type="Control"]
 layout_mode = 3

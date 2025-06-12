@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cixkjcmax18xk"
-path="res://.godot/imported/starry-sky-stars-space-night-1266267.jpg-e7d2249977cd2451b181bc9ac5be36d5.ctex"
+uid="uid://okqw8qjj5lxr"
+path="res://.godot/imported/player.png-e1eaffe0873063c60a0d0b322e4d87d9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/starry-sky-stars-space-night-1266267.jpg"
-dest_files=["res://.godot/imported/starry-sky-stars-space-night-1266267.jpg-e7d2249977cd2451b181bc9ac5be36d5.ctex"]
+source_file="res://assets/sprites/player.png"
+dest_files=["res://.godot/imported/player.png-e1eaffe0873063c60a0d0b322e4d87d9.ctex"]
 
 [params]
 

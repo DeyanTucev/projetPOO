@@ -1,11 +1,11 @@
 [gd_scene load_steps=4 format=3 uid="uid://c00e8mhnx0gns"]
 
 [ext_resource type="Script" uid="uid://d1fca1y1diuqq" path="res://Scripts/PlayerShootScene.cs" id="1_65o0x"]
-[ext_resource type="Texture2D" uid="uid://4xtqeregf5ob" path="res://sprites/enemyBullet.png" id="2_5m0g6"]
+[ext_resource type="Texture2D" uid="uid://cgxokf5sdsfse" path="res://assets/sprites/bullet.png" id="2_65o0x"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qdnut"]
 radius = 8.0
-height = 36.0
+height = 48.0
 
 [node name="PlayerShootScene" type="Area2D"]
 light_mask = 2
@@ -15,12 +15,14 @@ collision_mask = 4
 script = ExtResource("1_65o0x")
 
 [node name="BulletSprite" type="Sprite2D" parent="."]
+position = Vector2(-3, -4)
 rotation = 1.5708
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("2_5m0g6")
+scale = Vector2(0.0581417, 0.0557667)
+texture = ExtResource("2_65o0x")
 offset = Vector2(80, -42)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -1)
 shape = SubResource("CapsuleShape2D_qdnut")
 
 [connection signal="area_entered" from="." to="." method="_on_Area2D_area_entered"]

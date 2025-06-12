@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ce46v4w2obxno"
-path="res://.godot/imported/bouttons_Pause.png-2b6f1733b04c42e23251ec9096d2e7cd.ctex"
+uid="uid://cgxokf5sdsfse"
+path="res://.godot/imported/bullet.png-f46585c7ec2413c07a04c5a8ef7289a3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/bouttons_Pause.png"
-dest_files=["res://.godot/imported/bouttons_Pause.png-2b6f1733b04c42e23251ec9096d2e7cd.ctex"]
+source_file="res://assets/sprites/bullet.png"
+dest_files=["res://.godot/imported/bullet.png-f46585c7ec2413c07a04c5a8ef7289a3.ctex"]
 
 [params]
 
