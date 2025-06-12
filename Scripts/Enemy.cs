@@ -66,7 +66,7 @@ public partial class Enemy : Area2D
 				playerNode.AddScore(5);
 			}
 			
-			GetNode<CollisionShape2D>("CollisionShape2D").Disabled = true;
+			GetNode<CollisionShape2D>("CollisionShape2D").CallDeferred("set_disabled", true);
 
 			// Vérifie si le container existe
 			if (GetParent() is EnemyContainer container)
