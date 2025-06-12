@@ -24,7 +24,7 @@ public partial class ScoreDB : Node
 			cmd.CommandText = @"
 				CREATE TABLE IF NOT EXISTS playerScore (
 					ID INTEGER PRIMARY KEY AUTOINCREMENT,
-					Pseudo TEXT NOT NULL,
+					Pseudo TEXT NOT NULL UNIQUE,
 					Score INTEGER NOT NULL
 				)";
 			cmd.ExecuteNonQuery();

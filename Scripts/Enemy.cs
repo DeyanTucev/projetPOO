@@ -13,7 +13,10 @@ public partial class Enemy : Area2D
 		base._Ready();
 		var collisionShape = GetNode<CollisionShape2D>("CollisionShape2D");
 		var shape = (RectangleShape2D)collisionShape.Shape;
-		Connect("area_entered", new Callable(this, nameof(_on_Area2D_area_entered)));
+		if(!IsConnected("area_entered", new Callable(this, nameof(_on_Area2D_area_entered))))
+		{
+			Connect("area_entered", new Callable(this, nameof(_on_Area2D_area_entered)));
+		}
 	}
 
 	public void Shoot()
@@ -41,6 +44,11 @@ public partial class Enemy : Area2D
 	
 	private void _on_Area2D_area_entered(Area2D area)
 	{
+		if (!IsInsideTree() || !Visible)
+		{
+			return;
+		}
+		
 		GD.Print("===> Area entered: ", area.Name);
 
 		// Affiche tous les groupes de ce node
@@ -57,26 +65,8 @@ public partial class Enemy : Area2D
 			{
 				playerNode.AddScore(5);
 			}
-
-		// Vérifie si le container existe
-		if (GetParent() is EnemyContainer container)
-		{
-			container.OnEnemyKilled();
-		}
-		QueueFree();
-	}
-
-		if (area.IsInGroup("PlayerBullet"))
-		{
-			GD.Print("===> PlayerBullet detected! (traitement en cours)");
-
-			area.QueueFree();
-		
-			var playerNode = GetTree().GetFirstNodeInGroup("Player") as player;
-			if (playerNode != null)
-			{
-				playerNode.AddScore(5);
-			}
+			
+			GetNode<CollisionShape2D>("CollisionShape2D").Disabled = true;
 
 			// Vérifie si le container existe
 			if (GetParent() is EnemyContainer container)

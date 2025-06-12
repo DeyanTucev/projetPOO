@@ -15,7 +15,7 @@ layout_mode = 0
 offset_left = 3.0
 offset_top = 9.0
 offset_right = 1197.0
-offset_bottom = 487.0
+offset_bottom = 214.0
 size_flags_vertical = 1
 theme_override_font_sizes/font_size = 150
 text = "Space Invaders"
@@ -25,16 +25,16 @@ vertical_alignment = 1
 [node name="Pseudo" type="LineEdit" parent="."]
 layout_mode = 0
 offset_left = 333.0
-offset_top = 364.0
+offset_top = 250.0
 offset_right = 850.0
-offset_bottom = 511.0
+offset_bottom = 397.0
 theme_override_font_sizes/font_size = 50
 placeholder_text = "Entrez votre pseudo"
 alignment = 1
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 0
-offset_top = 549.0
+offset_top = 433.0
 offset_right = 1195.0
 offset_bottom = 1049.0
 theme = SubResource("Theme_06t4h")
@@ -53,6 +53,12 @@ flat = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 75
 text = "SETTINGS"
+flat = true
+
+[node name="highscore" type="Button" parent="CenterContainer/MainButtons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 75
+text = "HIGH SCORE"
 flat = true
 
 [node name="credits" type="Button" parent="CenterContainer/MainButtons"]
@@ -157,6 +163,27 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 75
 text = "BACK"
+
+[node name="HighScoreBox" type="VBoxContainer" parent="CenterContainer"]
+visible = false
+layout_mode = 2
+
+[node name="back" type="Button" parent="CenterContainer/HighScoreBox"]
+custom_minimum_size = Vector2(353, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 75
+text = "BACK"
+
+[node name="scoreTitle" type="Label" parent="CenterContainer/HighScoreBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 75
+text = "HIGH SCORE
+"
+
+[node name="HighScoreList" type="Label" parent="CenterContainer/HighScoreBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
 
 [node name="TextureRect" type="TextureRect" parent="."]
 z_index = -4096

@@ -63,11 +63,15 @@ public partial class player : Area2D
 		var ScoreLabel = GetNode<Label>("../Node2D/ScoreLabel");
 		score += amount;
 		if (ScoreLabel != null)
+		{
 			ScoreLabel.Text = $"Score: {score}";
+		}
 		else
+		{
 			GD.PrintErr("ScoreLabel is not assigned!");
+		}
 	}
-		public override void _Process(double delta)
+	public override void _Process(double delta)
 	{
 
 		Vector2 velocity = Vector2.Zero;
@@ -92,7 +96,7 @@ public partial class player : Area2D
 			Shoot();
 			ShootTimer.Start();
 		}
-	} 
+	}
 
 public void Shoot()
 {
@@ -212,7 +216,12 @@ public void Shoot()
 			connection.Open();
 			
 			using var insertCommand = connection.CreateCommand();
-			insertCommand.CommandText = @"INSERT INTO playerScore (Pseudo, Score) VALUES (@pseudo, @score);";
+			insertCommand.CommandText = @"
+			INSERT INTO playerScore (Pseudo, Score)
+			VALUES (@pseudo, @score)
+			ON CONFLICT(Pseudo) DO UPDATE SET Score =
+				CASE WHEN @score > Score THEN @score ELSE Score END;
+			";
 			insertCommand.Parameters.AddWithValue("@pseudo", pseudo);
 			insertCommand.Parameters.AddWithValue("@score", score);
 			insertCommand.ExecuteNonQuery();
