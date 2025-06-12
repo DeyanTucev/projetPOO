@@ -24,11 +24,13 @@ public partial class EnemyContainer : Node2D
 	private Vector2 initialPosition;
 	private Dictionary<int, int> lineDownCounters = new Dictionary<int, int>();
 	private int max_compteur_down = 10;
-
+	private AudioStreamPlayer2D _enemyDeathSound;
 	public override void _Ready()
 	{
 		GD.Print("EnemyContainer ready, spawning enemies...");
 		initialPosition = Position;
+		_enemyDeathSound = GetNode<AudioStreamPlayer2D>("EnemyDeathSound");
+
 		SpawnEnemies();
 
 		shootTimer = GetNode<Timer>("ShootTimer");
@@ -179,10 +181,21 @@ public partial class EnemyContainer : Node2D
 	public void OnEnemyKilled()
 	{
 		GD.Print("OnEnemyKilled called, checking enemy count...");
+		
 		// Lance un mini timer pour vérifier après la suppression effective
 		var checkTimer = new Timer();
 		checkTimer.OneShot = true;
 		checkTimer.WaitTime = 0.1;
+   		var shootSoundInstance = new AudioStreamPlayer2D();
+   		shootSoundInstance.Stream = _enemyDeathSound.Stream; 
+   		AddChild(shootSoundInstance);
+   		shootSoundInstance.Play();
+
+   		// Supprimer le son après la durée du stream
+   		float duration = (float)shootSoundInstance.Stream.GetLength();
+   		var timer = new Timer();
+
+
 		AddChild(checkTimer);
 
 		checkTimer.Timeout += () =>

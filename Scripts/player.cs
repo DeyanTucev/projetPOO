@@ -22,6 +22,7 @@ public partial class player : Area2D
 	private bool tookDMG = false;
 	private Global globalPseudo;
 	private string pseudo = "";
+	private AudioStreamPlayer2D shootSound;
 
 	private async Task BlinkEffect()
 	{
@@ -52,7 +53,7 @@ public partial class player : Area2D
 		
 		var collisionShape = GetNode<CollisionShape2D>("CollisionShape2D");
 		var shape = (CapsuleShape2D)collisionShape.Shape;
-
+		shootSound = GetNode<AudioStreamPlayer2D>("ShootSound");
 		// Connexion du signal de collision
 		base._Ready();
 		Connect("area_entered", new Callable(this, nameof(OnAreaEntered)));
@@ -93,27 +94,46 @@ public partial class player : Area2D
 		}
 	} 
 
-	public void Shoot()
-	{
-		// Check if BulletScene is assigned
-		// and if the bullet can be instantiated
-		if (PlayerShootScene == null)
-		{
-			GD.Print("PlayerShootScene not assigned.");
-			return;
-		}
-		var bulletNode = PlayerShootScene.Instantiate();
-		if (bulletNode is Area2D bullet)
-		{ 
-			bullet.GlobalPosition = GlobalPosition;
-			bullet.AddToGroup("PlayerBullet");
-			GetTree().Root.AddChild(bullet);
-		}
-		else
-		{
-			GD.PrintErr("BulletScene is not a PlayerBullet!");
-		}
-	}
+public void Shoot()
+{
+    if (PlayerShootScene == null)
+    {
+        GD.Print("PlayerShootScene not assigned.");
+        return;
+    }
+
+    // Crée un nouveau AudioStreamPlayer2D pour ne pas couper les sons précédents
+    var shootSoundInstance = new AudioStreamPlayer2D();
+    shootSoundInstance.Stream = shootSound.Stream; // reprend le même son que le node existant
+    AddChild(shootSoundInstance);
+    shootSoundInstance.Play();
+
+    // Supprimer le son après la durée du stream
+    float duration = (float)shootSoundInstance.Stream.GetLength();
+    var timer = new Timer();
+    timer.WaitTime = duration;
+    timer.OneShot = true;
+    AddChild(timer);
+    timer.Start();
+
+    timer.Timeout += () =>
+    {
+        shootSoundInstance.QueueFree();
+        timer.QueueFree();
+    };
+
+    // Instancier la balle
+    var bulletNode = PlayerShootScene.Instantiate();
+    if (bulletNode is Area2D bullet)
+    {
+        bullet.GlobalPosition = GlobalPosition;
+        bullet.AddToGroup("PlayerBullet");
+        GetTree().Root.AddChild(bullet);
+    }
+    else
+    {
+        GD.PrintErr("BulletScene is not a PlayerBullet!");
+    }}
 
 	private void OnAreaEntered(Area2D area)
 	{
