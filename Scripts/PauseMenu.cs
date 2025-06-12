@@ -21,6 +21,8 @@ public partial class PauseMenu : Node2D
 		{
 			GD.Print("Boutton quitter trouvé !");
 			endButton.Pressed += EndGame;
+			endButton.ProcessMode = Godot.Node.ProcessModeEnum.Always;
+			PauseBox.ProcessMode = Godot.Node.ProcessModeEnum.Always;
 		}
 		
 		PauseBox.Visible = false;
