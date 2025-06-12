@@ -16,8 +16,8 @@
 
 ## **Dependencies**
 - Microsoft.Data.Sqlite
-    - To install, run :  
-    dotnet add package Microsoft.Data.Sqlite
+	- To install, run :  
+	dotnet add package Microsoft.Data.Sqlite
 ### **Additional Tools Used**
 - **To be filled**
 

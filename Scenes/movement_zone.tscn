@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c5vtxijkfokds"]
 
-[ext_resource type="Texture2D" uid="uid://cixkjcmax18xk" path="res://sprites/starry-sky-stars-space-night-1266267.jpg" id="1_8tsfm"]
+[ext_resource type="Texture2D" uid="uid://cixkjcmax18xk" path="res://assets/sprites/starry-sky-stars-space-night-1266267.jpg" id="1_8tsfm"]
 
 [node name="MovementZone" type="Node2D"]
 
