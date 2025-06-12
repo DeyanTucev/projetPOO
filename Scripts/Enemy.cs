@@ -58,26 +58,6 @@ public partial class Enemy : Area2D
 				playerNode.AddScore(5);
 			}
 
-		// Vérifie si le container existe
-		if (GetParent() is EnemyContainer container)
-		{
-			container.OnEnemyKilled();
-		}
-		QueueFree();
-	}
-
-		if (area.IsInGroup("PlayerBullet"))
-		{
-			GD.Print("===> PlayerBullet detected! (traitement en cours)");
-
-			area.QueueFree();
-		
-			var playerNode = GetTree().GetFirstNodeInGroup("Player") as player;
-			if (playerNode != null)
-			{
-				playerNode.AddScore(5);
-			}
-
 			// Vérifie si le container existe
 			if (GetParent() is EnemyContainer container)
 			{

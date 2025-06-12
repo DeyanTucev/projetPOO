@@ -168,21 +168,22 @@ text = "BACK"
 visible = false
 layout_mode = 2
 
-[node name="scoreTitle" type="Label" parent="CenterContainer/HighScoreBox"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 75
-text = "HIGH SCORE
-"
-
-[node name="HighScoreList" type="RichTextLabel" parent="CenterContainer/HighScoreBox"]
-layout_mode = 2
-
 [node name="back" type="Button" parent="CenterContainer/HighScoreBox"]
 custom_minimum_size = Vector2(353, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 75
 text = "BACK"
+
+[node name="scoreTitle" type="Label" parent="CenterContainer/HighScoreBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 75
+text = "HIGH SCORE
+"
+
+[node name="HighScoreList" type="Label" parent="CenterContainer/HighScoreBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
 
 [node name="TextureRect" type="TextureRect" parent="."]
 z_index = -4096

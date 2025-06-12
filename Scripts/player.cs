@@ -62,11 +62,15 @@ public partial class player : Area2D
 		var ScoreLabel = GetNode<Label>("../Node2D/ScoreLabel");
 		score += amount;
 		if (ScoreLabel != null)
+		{
 			ScoreLabel.Text = $"Score: {score}";
+		}
 		else
+		{
 			GD.PrintErr("ScoreLabel is not assigned!");
+		}
 	}
-		public override void _Process(double delta)
+	public override void _Process(double delta)
 	{
 
 		Vector2 velocity = Vector2.Zero;
@@ -91,7 +95,7 @@ public partial class player : Area2D
 			Shoot();
 			ShootTimer.Start();
 		}
-	} 
+	}
 
 	public void Shoot()
 	{

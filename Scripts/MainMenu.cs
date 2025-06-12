@@ -38,6 +38,7 @@ public partial class MainMenu : Control
 		pseudoInput.Visible = true;
 		settingsMenu.Visible = false;
 		creditsMenu.Visible = false;
+		highScoreBox.Visible = false;
 		
 		GetNode<Button>("CenterContainer/MainButtons/play").Pressed += OnPlayPressed;
 		GetNode<Button>("CenterContainer/MainButtons/settings").Pressed += OnSettingsPressed;
@@ -129,7 +130,7 @@ public partial class MainMenu : Control
 			connection.Open();
 			
 			using var command = connection.CreateCommand();
-			command.CommandText = "SELECT Pseudo, Score FROM playerScore ORDER BY Score DESC LIMIT 10;";
+			command.CommandText = "SELECT Pseudo, Score FROM playerScore ORDER BY Score DESC LIMIT 5;";
 			
 			using SQLiteDataReader reader = command.ExecuteReader();
 			
@@ -144,11 +145,12 @@ public partial class MainMenu : Control
 				rank++;
 			}
 			
-			var scoreLabel = GetNode<RichTextLabel>("CenterContainer/HighScoreBox/HighScoreList");
+			var scoreLabel = GetNode<Label>("CenterContainer/HighScoreBox/HighScoreList");
 			if (scoreLabel != null)
 			{
 				GD.Print("Contenu highScore :\n" + highScoreText.ToString());
 				scoreLabel.Text = highScoreText.ToString();
+				scoreLabel.Visible = true;
 			}
 			else
 			{
