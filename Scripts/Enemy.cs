@@ -1,26 +1,19 @@
 using Godot;
 using System;
-
 public partial class Enemy : Area2D
 {
 	[Export] public PackedScene BulletScene;
-	[Export] public float BaseBulletSpeed = 200f;
-	[Export] public float BaseShootInterval = 2.0f;
-
+	[Export] public float BulletSpeed = 200f; // Speed of the bullet
 	private Timer shootTimer;
-	private float bulletSpeed;
-	private float shootInterval;
-
+	
 	public override void _Ready()
 	{
 		base._Ready();
 
-		bulletSpeed = BaseBulletSpeed;
-		shootInterval = BaseShootInterval;
-
 		var collisionShape = GetNode<CollisionShape2D>("CollisionShape2D");
 		var shape = (RectangleShape2D)collisionShape.Shape;
-		if(!IsConnected("area_entered", new Callable(this, nameof(_on_Area2D_area_entered))))
+
+		if (!IsConnected("area_entered", new Callable(this, nameof(_on_Area2D_area_entered))))
 		{
 			Connect("area_entered", new Callable(this, nameof(_on_Area2D_area_entered)));
 		}
@@ -35,12 +28,12 @@ public partial class Enemy : Area2D
 			GD.Print("BulletScene not assigned.");
 			return;
 		}
+
 		var bulletNode = BulletScene.Instantiate();
+
 		if (bulletNode is EnemyBullet bullet)
 		{
-
 			bullet.GlobalPosition = GlobalPosition;
-			bullet.Init(bulletSpeed);
 			GetTree().Root.AddChild(bullet);
 		}
 		else
@@ -48,14 +41,14 @@ public partial class Enemy : Area2D
 			GD.PrintErr("BulletScene is not an EnemyBullet!");
 		}
 	}
-	
+
 	private void _on_Area2D_area_entered(Area2D area)
 	{
 		if (!IsInsideTree() || !Visible)
 		{
 			return;
 		}
-		
+
 		GD.Print("===> Area entered: ", area.Name);
 
 		// Affiche tous les groupes de ce node
@@ -69,30 +62,21 @@ public partial class Enemy : Area2D
 			area.QueueFree();
 			var playerNode = GetTree().GetFirstNodeInGroup("Player") as player;
 			if (playerNode != null)
-			{
-				playerNode.AddScore(5);
-			}
-			
-			GetNode<CollisionShape2D>("CollisionShape2D").CallDeferred("set_disabled", true);
 
+			{
+
+				playerNode.AddScore(5);
+
+			}
+			GetNode<CollisionShape2D>("CollisionShape2D").CallDeferred("set_disabled", true);
 			// Vérifie si le container existe
+
 			if (GetParent() is EnemyContainer container)
 			{
 				container.OnEnemyKilled();
 			}
+
 			QueueFree();
-		}
-	}
-
-	public void SetDifficultyMultiplier(float shootRateMult, float bulletSpeedMult)
-	{
-		shootInterval = BaseShootInterval * shootRateMult;
-		bulletSpeed = BaseBulletSpeed * bulletSpeedMult;
-
-		if (shootTimer != null)
-		{
-			shootTimer.WaitTime = shootInterval;
-			shootTimer.Start();
 		}
 	}
 }

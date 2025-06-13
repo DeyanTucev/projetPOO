@@ -3,8 +3,9 @@ using System;
 
 public partial class EnemyBullet : Area2D
 {
+
 	[Export] public float Speed = 200f; // Speed of the bullet
-	
+
 	public override void _Ready()
 	{
 		AddToGroup("EnemyBullet");
@@ -26,10 +27,5 @@ public partial class EnemyBullet : Area2D
 		{
 			QueueFree();
 		}
-	}
-
-	public void Init(float speed)
-	{
-		Speed = speed;
-	}
+	}	
 }

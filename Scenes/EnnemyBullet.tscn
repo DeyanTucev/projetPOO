@@ -10,7 +10,6 @@ height = 36.0
 [node name="EnemyBullet" type="Area2D"]
 collision_layer = 8
 script = ExtResource("1_o7xso")
-Speed = 100.0
 
 [node name="BulletSprite" type="Sprite2D" parent="."]
 rotation = 1.5708
