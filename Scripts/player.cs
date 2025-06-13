@@ -67,10 +67,13 @@ public partial class player : Area2D
 	{
 		var ScoreLabel = GetNode<Label>("../Node2D/ScoreLabel");
 		score += amount;
+		
+		Global globalScore = (Global)GetNode("/root/Global");
+		globalScore.Score = score;
+		
 		if (ScoreLabel != null)
 		{
 			ScoreLabel.Text = $"Score: {score}";
-			amount = 0;
 		}
 		else
 		{
@@ -212,9 +215,7 @@ public void Shoot()
 		
 		Global global = (Global)GetNode("/root/Global");
 		string pseudo = global.Pseudo;
-		
-		Global global2 = (Global)GetNode("/root/Global");
-		global2.Score = score;
+		int score = global.Score;
 		
 		GD.Print(pseudo);
 		

@@ -14,7 +14,6 @@ public partial class PauseMenu : Node2D
 	
 	public override void _Ready()
 	{
-		score = ((Global)GetNode("/root/Global")).Score;
 		
 		pauseButton = GetNode<Button>("PauseButton");
 		PauseBox = GetNode<Control>("CenterContainer/PauseBox");
@@ -64,6 +63,7 @@ public partial class PauseMenu : Node2D
 		
 		Global global = (Global)GetNode("/root/Global");
 		string pseudo = global.Pseudo;
+		score = global.Score;
 		
 		GD.Print(pseudo);
 		
