@@ -27,4 +27,9 @@ public partial class EnemyBullet : Area2D
 			QueueFree();
 		}
 	}
+
+	public void Init(float speed)
+	{
+		Speed = speed;
+	}
 }

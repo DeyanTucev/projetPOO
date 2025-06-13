@@ -4,13 +4,20 @@ using System;
 public partial class Enemy : Area2D
 {
 	[Export] public PackedScene BulletScene;
-	[Export] public float BulletSpeed = 200f; // Speed of the bullet
+	[Export] public float BaseBulletSpeed = 200f;
+	[Export] public float BaseShootInterval = 2.0f;
 
 	private Timer shootTimer;
+	private float bulletSpeed;
+	private float shootInterval;
 
 	public override void _Ready()
 	{
 		base._Ready();
+
+		bulletSpeed = BaseBulletSpeed;
+		shootInterval = BaseShootInterval;
+
 		var collisionShape = GetNode<CollisionShape2D>("CollisionShape2D");
 		var shape = (RectangleShape2D)collisionShape.Shape;
 		if(!IsConnected("area_entered", new Callable(this, nameof(_on_Area2D_area_entered))))
@@ -33,7 +40,7 @@ public partial class Enemy : Area2D
 		{
 
 			bullet.GlobalPosition = GlobalPosition;
-			
+			bullet.Init(bulletSpeed);
 			GetTree().Root.AddChild(bullet);
 		}
 		else
@@ -74,6 +81,18 @@ public partial class Enemy : Area2D
 				container.OnEnemyKilled();
 			}
 			QueueFree();
+		}
+	}
+
+	public void SetDifficultyMultiplier(float shootRateMult, float bulletSpeedMult)
+	{
+		shootInterval = BaseShootInterval * shootRateMult;
+		bulletSpeed = BaseBulletSpeed * bulletSpeedMult;
+
+		if (shootTimer != null)
+		{
+			shootTimer.WaitTime = shootInterval;
+			shootTimer.Start();
 		}
 	}
 }
