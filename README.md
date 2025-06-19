@@ -1,13 +1,12 @@
-# **Jack Invaders**
+# **Space Invaders**
 
 ## **Contributors**
 - **Chris Brandt**  
 - **Deyan Tucev**
 - **Samuel Gergely**
-- **Leticia Dépierraz**
 
 ## **Overview**
-*Jack Invaders* is a small game heavily inspired by the popular classic *Space Invaders*.
+*Space Invaders* is a small game heavily inspired by the popular classic *Space Invaders*.
 
 ### What has been done
 - Establishing the basis on which we'll code
@@ -33,4 +32,3 @@
 chris.brandt@eduvaud.ch  
 deyan.tucev@eduvaud.ch  
 samuel.gergely@eduvaud.ch  
-leticia.depierraz@eduvaud.ch  
